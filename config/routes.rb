@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # Rails endpoints
   resources :users
   get '/users/new', to: 'api/users#new'
+  root to: 'pages#index'
   get '/kitchens', to: 'kitchens#index'
   get '/kitchens/new', to: 'kitchens#new'
   get '/kitchens/:id', to: 'kitchens#show'
