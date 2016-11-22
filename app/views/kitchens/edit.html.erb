@@ -1,43 +1,68 @@
-<h1>Update kitchen details</h1>
+<h2>Update kitchen details</h2>
+
 <form id="kitchen-form">
+
   <input id="kitchen-id" value="<%= @kitchen.id %>" type="hidden">
-  <div>
-    <label for="title">Title</label>
-    <input id="title" value="<%= @kitchen.title %>" name="title" type="text">
+
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="title">Title</label>
+      <input id="title" value="<%= @kitchen.title %>" name="title" type="text">
+    </div>
   </div>
-  <div>
-    <label for="address">Address</label>
-    <input id="address" value="<%= @kitchen.address %>" name="address" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="address">Address</label>
+      <input id="address" value="<%= @kitchen.address %>" name="address" type="text">
+    </div>
   </div>
-  <div>
-    <label for="suburb">Suburb</label>
-    <input id="suburb" value="<%= @kitchen.suburb %>" name="suburb" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="suburb">Suburb</label>
+      <input id="suburb" value="<%= @kitchen.suburb %>" name="suburb" type="text">
+    </div>
   </div>
-  <div>
-    <label for="postcode">Postcode</label>
-    <input id="postcode" value="<%= @kitchen.postcode %>" name="postcode" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="postcode">Postcode</label>
+      <input id="postcode" value="<%= @kitchen.postcode %>" name="postcode" type="text">
+    </div>
   </div>
-  <div>
-    <label for="state">State</label>
-    <input id="state" value="<%= @kitchen.state %>" name="state" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="state">State</label>
+      <input id="state" value="<%= @kitchen.state %>" name="state" type="text">
+    </div>
   </div>
-  <div>
-    <label for="country">Country</label>
-    <input id="country" value="<%= @kitchen.country %>" name="country" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="country">Country</label>
+      <input id="country" value="<%= @kitchen.country %>" name="country" type="text">
+    </div>
   </div>
-  <div>
-    <label for="description">Description</label>
-    <input id="description" value="<%= @kitchen.description %>" name="description" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="description">Description</label>
+      <input id="description" value="<%= @kitchen.description %>" name="description" type="text">
+    </div>
   </div>
-  <div>
-    <label for="capacity">Capacity</label>
-    <input id="capacity" value="<%= @kitchen.capacity %>" name="capacity" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="capacity">Capacity</label>
+      <input id="capacity" value="<%= @kitchen.capacity %>" name="capacity" type="text">
+    </div>
   </div>
-  <div>
-    <label for="fee">Fee</label>
-    <input id="fee" value="<%= @kitchen.fee %>" name="fee" type="text">
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <label for="fee">Fee</label>
+      <input id="fee" value="<%= @kitchen.fee %>" name="fee" type="text">
+    </div>
   </div>
-  <button>Save changes</button>
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
+      <button class="btn waves-effect waves-light">Save changes</button>
+    </div>
+  </div>
 </form>
 
 <script>

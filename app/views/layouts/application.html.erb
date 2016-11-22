@@ -18,9 +18,11 @@
 
     <nav>
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">UMK Logo</a>
+        <a href="/">
+          <svg viewBox="0 0 107.3 75.7"><path d="M85 4.6c-4.4 0-8.6 1.3-12.1 3.5C68 3.1 61.2 0 53.6 0c-7.6 0-14.4 3.1-19.3 8.1 -3.5-2.2-7.6-3.5-12-3.5C10 4.6 0 14.6 0 26.9c0 12.3 10 22.3 22.3 22.3 1.1 0 2.2-0.1 3.3-0.2v26.7h56V49c1.1 0.2 2.2 0.2 3.3 0.2 12.3 0 22.3-10 22.3-22.3C107.3 14.6 97.3 4.6 85 4.6" ></svg> Use My Kitchen
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="">Sign Up</a></li>
+          <li><a href="/users/new">Sign Up</a></li>
           <li><a href="/session/new">Log In</a></li>
         </ul>
       </div>
@@ -29,6 +31,30 @@
     <main>
       <%= yield %>
     </main>
+
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Use My Kitchen</h5>
+            <p class="grey-text text-lighten-4">TODO: Write a one-liner.</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Important Stuff</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="#!">Terms &amp; Privacy</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Why Host</a></li>
+              <li><a class="grey-text text-lighten-3" href="#!">Help</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2016 Project by Fiver
+        </div>
+      </div>
+    </footer>
 
   </body>
 

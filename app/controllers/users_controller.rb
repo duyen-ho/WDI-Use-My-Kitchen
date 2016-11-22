@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     if user.save
       redirect_to '/'
     else
+      @errors = user.errors.messages
       render :new
     end
 
