@@ -1,0 +1,115 @@
+<h1>Add kitchen</h1>
+
+<div class="row">
+  <%= form_tag '/api/kitchens', method: 'post', id: 'kitchen-form' do %>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="title">Title</label>
+        <input id="title" name="title" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="suburb">Suburb</label>
+        <input id="suburb" name="suburb" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="postcode">Postcode</label>
+        <input id="postcode" name="postcode" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <select name="state">
+          <option value="" disabled selected>State</option>
+          <option value="ACT">Australian Capital Territory</option>
+          <option value="NSW">New South Wales</option>
+          <option value="NT ">Northern Territory</option>
+          <option value="QLD">Queensland</option>
+          <option value="SA ">South Australia</option>
+          <option value="TAS">Tasmania</option>
+          <option value="VIC">Victoria</option>
+          <option value="WA ">Western Australia</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="country">Country</label>
+        <select name="state">
+          <option value="" disabled selected>Country</option>
+          <option value="Australia">Australia</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+        <label for="description">Description</label>
+        <textarea id="textarea1" class="materialize-textarea" name="description" type="text"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="capacity">Capacity</label>
+        <input id="capacity" name="capacity" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <label for="fee">Fee</label>
+        <input id="fee" name="fee" type="text">
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4">
+        <button class="btn waves-effect waves-light">Add</button>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<script>
+
+  $(document).ready(function() {
+     $('select').material_select();
+  });
+
+  $('#kitchen-form').submit(function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: '/api/kitchens',
+      method: 'post',
+      data: {
+        title: $('#title').val(),
+        address: $('#address').val(),
+        suburb: $('#suburb').val(),
+        postcode: $('#postcode').val(),
+        state: $('#state').val(),
+        country: $('#country').val(),
+        description: $('#description').val(),
+        capacity: $('#capacity').val(),
+        fee: $('#fee').val(),
+        authenticity_token: '<%= form_authenticity_token %>',
+      }
+    }).done(function(res) {
+      // Redirect to kitchen details on success
+      if (res.success) {
+        window.location = '/kitchens/' + res.result;
+      }
+      else {
+        // TODO: Display errors
+        console.log(res);
+      }
+    });
+  });
+</script>
