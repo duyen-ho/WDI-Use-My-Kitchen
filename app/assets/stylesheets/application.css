@@ -14,6 +14,10 @@
  *= require_self
  */
 
+h2 {
+  text-align: center;
+}
+
 .profile-image {
   width: 100%;
   border-radius: 50%;
