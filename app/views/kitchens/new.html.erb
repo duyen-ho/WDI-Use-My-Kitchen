@@ -1,0 +1,72 @@
+<h1>Add kitchen</h1>
+<%= form_tag '/api/kitchens', method: 'post', id: 'kitchen-form' do %>
+  <div>
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text">
+  </div>
+  <div>
+    <label for="address">Address</label>
+    <input id="address" name="address" type="text">
+  </div>
+  <div>
+    <label for="suburb">Suburb</label>
+    <input id="suburb" name="suburb" type="text">
+  </div>
+  <div>
+    <label for="postcode">Postcode</label>
+    <input id="postcode" name="postcode" type="text">
+  </div>
+  <div>
+    <label for="state">State</label>
+    <input id="state" name="state" type="text">
+  </div>
+  <div>
+    <label for="country">Country</label>
+    <input id="country" name="country" type="text">
+  </div>
+  <div>
+    <label for="description">Description</label>
+    <input id="description" name="description" type="text">
+  </div>
+  <div>
+    <label for="capacity">Capacity</label>
+    <input id="capacity" name="capacity" type="text">
+  </div>
+  <div>
+    <label for="fee">Fee</label>
+    <input id="fee" name="fee" type="text">
+  </div>
+  <button>Add</button>
+<% end %>
+
+<script>
+  $('#kitchen-form').submit(function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: '/api/kitchens',
+      method: 'post',
+      data: {
+        title: $('#title').val(),
+        address: $('#address').val(),
+        suburb: $('#suburb').val(),
+        postcode: $('#postcode').val(),
+        state: $('#state').val(),
+        country: $('#country').val(),
+        description: $('#description').val(),
+        capacity: $('#capacity').val(),
+        fee: $('#fee').val(),
+        authenticity_token: '<%= form_authenticity_token %>',
+      }
+    }).done(function(res) {
+      // Redirect to kitchen details on success
+      if (res.success) {
+        window.location = '/kitchens/' + res.result;
+      }
+      else {
+        // TODO: Display errors
+        console.log(res);
+      }
+    });
+  });
+</script>
