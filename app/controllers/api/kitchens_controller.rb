@@ -23,16 +23,46 @@ class Api::KitchensController < ApplicationController
     # TODO Change to current user ID
     kitchen.user_id = 1
 
-    response = {}
+    json_result = {}
 
     if kitchen.save
-      response[:success] = true
-      response[:result] = kitchen.id
+      json_result[:success] = true
+      json_result[:result] = kitchen.id
     else
-      response[:success] = false
-      response[:errors] = kitchen.errors.messages.to_json
+      json_result[:success] = false
+      json_result[:errors] = kitchen.errors.messages.to_json
     end
 
-    render json: response
+    render json: json_result
+  end
+
+  # PATCH /api/kitchens/:id
+  def update
+    kitchen = Kitchen.find_by(id: params[:id])
+
+    kitchen.title = params[:title]
+    kitchen.address = params[:address]
+    kitchen.suburb = params[:suburb]
+    kitchen.postcode = params[:postcode]
+    kitchen.state = params[:state]
+    kitchen.country = params[:country]
+    kitchen.description = params[:description]
+    kitchen.capacity = params[:capacity].to_i
+    kitchen.fee = params[:fee].to_d
+    # TODO: Change to actual lat/long
+    kitchen.latitude = -37.818026
+    kitchen.longitude = 144.959957
+
+    json_result = {}
+
+    if kitchen.save
+      json_result[:success] = true
+      json_result[:result] = kitchen.id
+    else
+      json_result[:success] = false
+      json_result[:errors] = kitchen.errors.messages.to_json
+    end
+
+    render json: json_result
   end
 end

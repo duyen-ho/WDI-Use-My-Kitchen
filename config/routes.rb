@@ -5,12 +5,12 @@ Rails.application.routes.draw do
   get '/kitchens', to: 'kitchens#index'
   get '/kitchens/new', to: 'kitchens#new'
   get '/kitchens/:id', to: 'kitchens#show'
-
+  get '/kitchens/:id/edit', to: 'kitchens#edit'
   # API endpoints
   post '/api/users', to: 'api/users#create'
   get '/api/kitchens', to: 'api/kitchens#index'
   post '/api/kitchens', to: 'api/kitchens#create'
-
+  patch '/api/kitchens/:id', to: 'api/kitchens#update'
   # Sessions
   get '/session/new', to: 'session#new'
   post '/session', to: 'session#create'
