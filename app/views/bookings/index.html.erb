@@ -1,0 +1,24 @@
+<h2>Booking history</h2>
+
+<div id="bookings">
+</div>
+
+<script>
+  $.ajax({
+    url: '/api/bookings'
+  })
+  .done(function(response) {
+    console.log(response);
+    response.forEach(function(result) {
+      var $booking = $('<div>').addClass('card');
+      $booking.append(
+        $('<div>').addClass('card-content')
+          .append($('<span>').addClass('card-title').text(result.booking_date))
+          .append($('<div>').text('$' + parseFloat(result.fee).toFixed(2)))
+          .append($('<p>').text(result.note))
+          .append($('<div>').text('Status: ' + result.status))
+      );
+      $('#bookings').append($booking);
+    })
+  });
+</script>
