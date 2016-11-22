@@ -38,3 +38,39 @@
     </div>
   </form>
 </div>
+
+<form action="/users" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label for="">Email</label>
+  <% if @errors %>
+  <%= @errors[:email].join(', ') %>
+  <% end %>
+  <input name="email" type="text"  />
+
+  <label for="">Name</label>
+  <% if @errors %>
+  <%= @errors[:name].join(', ') %>
+  <% end %>
+  <input name="name" type="text"  />
+
+  <label for="">Password</label>
+  <% if @errors %>
+  <%= @errors[:password].join(', ') %>
+  <% end %>
+  <input name="password" type="password" />
+
+  <label for="">Description</label>
+  <% if @errors %>
+  <%= @errors[:description].join(', ') %>
+  <% end %>
+  <input name=description type="text" />
+
+  <label for="">Profile Picture</label>
+  <% if @errors %>
+  <%= @errors[:photo_url].join(', ') %>
+  <% end %>
+  <input name="photo_url" type="text"/>
+  <button>SIGN UP</button>
+
+</form>
