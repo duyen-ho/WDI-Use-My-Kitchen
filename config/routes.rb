@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   post '/api/users', to: 'api/users#create'
   get '/api/kitchens', to: 'api/kitchens#index'
   post '/api/kitchens', to: 'api/kitchens#create'
+  get '/session/new', to: 'session#new'
+  post '/session', to: 'session#create'
+  delete '/logout', to: 'session#destroy'
 end
