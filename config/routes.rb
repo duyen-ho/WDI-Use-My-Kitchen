@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/api/kitchens', to: 'api/kitchens#index'
   post '/api/kitchens', to: 'api/kitchens#create'
   patch '/api/kitchens/:id', to: 'api/kitchens#update'
+  post '/api/bookings', to: 'api/bookings#create'
   # Sessions
   get '/session/new', to: 'session#new'
   post '/session', to: 'session#create'
