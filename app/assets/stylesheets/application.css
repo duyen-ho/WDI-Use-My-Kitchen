@@ -16,9 +16,44 @@
 
 .profile-image {
   width: 100%;
+  border-radius: 50%;
 }
 
-.margin-top {
+.margin {
   margin-top: 4em;
   margin-bottom: 4em;
+}
+
+/* Landing Page */
+.landing-page {
+  background-image: url("http://hbu.h-cdn.co/assets/16/23/1600x800/landscape-1465239399-industrial-kitchen.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.landing-page h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.landing-page p {
+  color: #fff;
+}
+
+.landing-page input {
+  background-color: #fff;
+}
+
+.landing-page .input-field {
+  background-color: #fff;
+}
+
+.landing-page button {
+  margin-top: 1.5em;
+}
+
+footer {
+  margin-top: 0;
 }
