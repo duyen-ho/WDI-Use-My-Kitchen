@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   # API endpoints
   post '/api/users', to: 'api/users#create'
   get '/api/kitchens', to: 'api/kitchens#index'
+  get '/session/new', to: 'session#new'
+  post '/session', to: 'session#create'
+  delete '/logout', to: 'session#destroy'
 end
