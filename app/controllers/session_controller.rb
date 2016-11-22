@@ -7,6 +7,7 @@ class SessionController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      # TODO: Change path to profile/dashboard
       redirect_to '/'
     else
       render :new
