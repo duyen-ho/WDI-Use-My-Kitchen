@@ -15,4 +15,8 @@ class KitchensController < ApplicationController
       render :error
     end
   end
+
+  def edit
+    @kitchen = Kitchen.find_by(id: params[:id])
+  end
 end
