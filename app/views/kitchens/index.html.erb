@@ -16,8 +16,10 @@
       var $result = $('<div>');
       $result.append($('<div>')
         .append($('<h2>')
-          .text(result.title)
-        ));
+          .append($('<a>')
+            .attr('href', '/kitchens/' + result.id)
+            .text(result.title)
+          )));
       $result.append($('<div>')
         .text(result.address + ', ' + result.state + ' - ' + result.country));
       $result.append($('<div>')
