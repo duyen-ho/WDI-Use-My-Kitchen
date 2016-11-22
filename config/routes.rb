@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get '/users/new', to: 'api/users#new'
   get '/kitchens', to: 'kitchens#index'
   get '/kitchens/new', to: 'kitchens#new'
-
+  get '/kitchens/:id', to: 'kitchens#show'
+  
   # API endpoints
   post '/api/users', to: 'api/users#create'
   get '/api/kitchens', to: 'api/kitchens#index'
