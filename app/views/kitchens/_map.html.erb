@@ -16,23 +16,21 @@
       center: uluru
     });
 
-    for (i=0; i < dummy_data.length; i++ ) {
-      var marker = new google.maps.Marker({
-        position: dummy_data[i],
-        map: map
-      });
-    }
+    $.ajax({
+      url: '/api/kitchens'
+    }).done(function(res) {
+
+      for (i=0; i < res.length; i++ ) {
+        var marker = new google.maps.Marker({
+          position: {lat: res[i].latitude, lng: res[i].longitude},
+          map: map
+        });
+      }
+    });
   }
 
-// TODO dummy_data needs to be replaced with the search results data
-   var dummy_data = [{lat: -27.363, lng: 134.044}, {lat: -23.363, lng: 129.044}, {lat: -23.363, lng: 140.044}]
 
-   $.ajax({
-     url: '/api/kitchens'
-   }).done(function(res) {
-     console.log(res);
-     return res
-   });
+
 
 </script>
 
