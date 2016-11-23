@@ -34,10 +34,17 @@
           .text('$' + parseFloat(result.fee).toFixed(2)));
         $('#search-results').append($result);
       });
+    });
+  }
+
+  // Parse query string
+  var queryString = window.location.search.substring(1);
+  var query = {};
+  queryString.split('&').forEach(function(arg) {
+    var pair = arg.split('=');
+    query[pair[0]] = pair[1];
   });
-}
 
-
-  getSearchResults("Melbourne", 20);
-
+  // Show initial search results based on query string
+  getSearchResults(query.location, query.guests, query.date);
 </script>
