@@ -1,5 +1,5 @@
 <% if logged_in? %>
-<a href="/kitchens/new">Add listing</a>
+  <a href="/kitchens/new">Add listing</a>
 <% end %>
 
 <div class="row">
@@ -14,6 +14,7 @@
         <input id="guests" type="number">
         <label for="price-range">Price range</label>
         <div id="price-range"></div>
+        <button>Search</button>
       </form>
     </section>
 
@@ -38,16 +39,17 @@
   });
 
   // Load search results
-  var getSearchResults = function(location, capacity, date, callback) {
+  var getSearchResults = function(location, date, guests, callback) {
+    $('#search-results').empty();
+
     $.ajax({
       url: '/api/kitchens',
       data: {
         location: location,
         date: date,
-        guests: capacity
+        guests: guests
       }
     }).done(function(res) {
-      console.log(res);
       res.forEach(function(result) {
         var $result = $('<div>');
         $result.append($('<div>')
@@ -75,6 +77,16 @@
   });
 
   // Show initial search results based on query string
-  getSearchResults(query.location, query.guests, query.date, drawMarkers);
+  getSearchResults(query.location, query.date, query.guests, drawMarkers);
 
+  // Get search results on form submit
+  $('#search-form').submit(function(e) {
+    e.preventDefault();
+
+    getSearchResults($('#location').val(),
+      $('#date').val(),
+      $('#guests').val(),
+      drawMarkers
+    );
+  });
 </script>
