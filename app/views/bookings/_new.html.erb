@@ -30,13 +30,12 @@
       }
     })
     .done(function(res) {
-      $(e.target).trigger('reset');
       if (res.success) {
         $bookingResult.text('Booking made successfully');
+        $(e.target).trigger('reset');
       }
       else {
-        $bookingResult.text('An error occurred while trying to create a booking.'
-          + ' Please try again.');
+        $bookingResult.text('Could not create booking. Please try again.');
       }
     });
   });

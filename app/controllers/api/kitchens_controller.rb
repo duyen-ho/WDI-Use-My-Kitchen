@@ -17,9 +17,6 @@ class Api::KitchensController < ApplicationController
     kitchen.description = params[:description]
     kitchen.capacity = params[:capacity].to_i
     kitchen.fee = params[:fee].to_d
-    # TODO: Change to actual lat/long
-    kitchen.latitude = -37.818026
-    kitchen.longitude = 144.959957
     # TODO Change to current user ID
     kitchen.user_id = 1
 
