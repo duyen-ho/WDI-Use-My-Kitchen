@@ -23,6 +23,11 @@
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><% if logged_in? %>
+            <a href="/users/<%=current_user.id%>"><%= current_user.name %> </a>
+
+            <a href="/kitchens/new">Post your kitchen</a>
+
+
            <form action="/session" method="post">
              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
              <input type="hidden" name="_method" value="delete" />

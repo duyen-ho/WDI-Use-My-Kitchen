@@ -27,7 +27,7 @@ class Api::KitchensController < ApplicationController
       json_result[:result] = kitchen.id
     else
       json_result[:success] = false
-      json_result[:errors] = kitchen.errors.messages.to_json
+      json_result[:errors] = kitchen.errors.messages
     end
 
     render json: json_result
@@ -46,9 +46,8 @@ class Api::KitchensController < ApplicationController
     kitchen.description = params[:description]
     kitchen.capacity = params[:capacity].to_i
     kitchen.fee = params[:fee].to_d
-    # TODO: Change to actual lat/long
-    kitchen.latitude = -37.818026
-    kitchen.longitude = 144.959957
+    # kitchen.latitude = -37.818026
+    # kitchen.longitude = 144.959957
 
     json_result = {}
 

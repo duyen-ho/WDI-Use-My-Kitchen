@@ -1,7 +1,7 @@
 <h2>Add kitchen</h2>
 
 <%= form_tag '/api/kitchens', method: 'post', id: 'kitchen-form' do %>
-
+  <div id="error-messages"></div>
   <div class="row">
     <div class="input-field col s4 offset-s4">
       <label for="title">Title</label>
@@ -115,6 +115,15 @@
       }
       else {
         // TODO: Display errors
+        var $errors = $('#error-messages');
+        $errors.empty();
+
+        var fields = Object.keys(res.errors);
+        fields.forEach(function(field) {
+          res.errors[field].forEach(function(message) {
+            $errors.append($('<div>').text(field + ' ' + message));
+          });
+        })
         console.log(res);
       }
     });
