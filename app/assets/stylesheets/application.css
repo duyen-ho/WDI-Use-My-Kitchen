@@ -29,9 +29,24 @@ h2 {
 }
 
 svg {
-  margin: .6em;
-  fill: #fff;
+  margin: .7em;
+  fill: #000;
   height: 40px;
+}
+
+nav li a {
+  color: #000;
+}
+
+#logout-btn {
+  padding: 0 1em;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+}
+
+#logout-btn:hover {
+  background-color: rgba(0,0,0,0.1);
 }
 
 /* Landing Page */
@@ -69,4 +84,12 @@ footer {
 
 footer.page-footer {
   margin-top: 0;
+}
+
+footer a {
+  color: #000;
+}
+
+footer a:hover {
+  color: blue;
 }
