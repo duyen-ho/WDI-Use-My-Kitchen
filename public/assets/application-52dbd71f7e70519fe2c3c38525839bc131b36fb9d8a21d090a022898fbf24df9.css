@@ -1,0 +1,73 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+h2 {
+  text-align: center;
+}
+
+.profile-image {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.margin {
+  margin-top: 4em;
+  margin-bottom: 4em;
+}
+
+svg {
+  margin: .6em;
+  fill: #fff;
+  height: 40px;
+}
+
+/* Landing Page */
+.landing-page {
+  padding-top: 5em;
+  background-image: url("http://hbu.h-cdn.co/assets/16/23/1600x800/landscape-1465239399-industrial-kitchen.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+  text-align: center;
+}
+
+.landing-page h1 {
+  margin: 0;
+  color: #fff;
+}
+
+.landing-page p {
+  color: #fff;
+}
+
+.landing-page input {
+  background-color: #fff;
+  padding: 0.3em 0.5em;
+  border-radius: 2px;
+}
+
+/* Edit Form */
+#kitchen-form img {
+  width: 100%;
+}
+
+footer {
+  margin-top: 0;
+}
+
+footer.page-footer {
+  margin-top: 0;
+}
