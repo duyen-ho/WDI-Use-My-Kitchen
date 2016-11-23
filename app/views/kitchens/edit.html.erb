@@ -48,6 +48,13 @@
   </div>
   <div class="row">
     <div class="input-field col s4 offset-s4">
+      <label for="image-url">Image URL</label>
+      <input id="image-url" value="<%= @kitchen_photo.image_url %>" name="image_url" type="text">
+      <img src="<%= @kitchen_photo.image_url %>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s4 offset-s4">
       <label for="capacity">Capacity</label>
       <input id="capacity" value="<%= @kitchen.capacity %>" name="capacity" type="text">
     </div>
@@ -65,6 +72,7 @@
   </div>
 </form>
 
+
 <script>
   $('#kitchen-form').submit(function(e) {
     e.preventDefault();
@@ -81,6 +89,7 @@
         state: $('#state').val(),
         country: $('#country').val(),
         description: $('#description').val(),
+        image_url: $('#image_url').val(),
         capacity: $('#capacity').val(),
         fee: $('#fee').val(),
         authenticity_token: '<%= form_authenticity_token %>',

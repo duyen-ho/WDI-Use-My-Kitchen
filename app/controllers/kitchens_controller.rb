@@ -18,5 +18,7 @@ class KitchensController < ApplicationController
 
   def edit
     @kitchen = Kitchen.find_by(id: params[:id])
+    # TODO: Populate multiple photos
+    @kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
   end
 end
