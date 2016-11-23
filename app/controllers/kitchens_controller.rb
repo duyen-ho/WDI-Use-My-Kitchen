@@ -21,4 +21,7 @@ class KitchensController < ApplicationController
     # TODO: Populate multiple photos
     @kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
   end
+
+
+
 end
