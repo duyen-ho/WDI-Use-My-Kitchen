@@ -1,14 +1,42 @@
+<% if logged_in? %>
 <a href="/kitchens/new">Add listing</a>
+<% end %>
 
-<section id="search-form">
-</section>
+<div class="row">
+  <section id="sidebar" class="col s4">
+    <section>
+      <form id="search-form">
+        <label for="location">Location</label>
+        <input id="location" type="text">
+        <label for="date">Date</label>
+        <input id="date" type="date">
+        <label for="guests">Room for </label>
+        <input id="guests" type="number">
+        <label for="price-range">Price range</label>
+        <div id="price-range"></div>
+      </form>
+    </section>
 
-<section id="search-results">
-</section>
+    <section id="search-results">
+    </section>
+  </section>
 
-<%= render "map" %>
+  <%= render "map" %>
+</div>
 
 <script>
+  // Init price slider
+  var slider = document.getElementById('price-range');
+  noUiSlider.create(slider, {
+    start: [100, 1500],
+    connect: true,
+    step: 10,
+    range: {
+      min: 100,
+      max: 1500
+    }
+  });
+
   // Load search results
   var getSearchResults = function(location, capacity, date, callback) {
     $.ajax({
