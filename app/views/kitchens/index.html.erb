@@ -10,7 +10,7 @@
 
 <script>
   // Load search results
-  var getSearchResults = function(location, capacity, date) {
+  var getSearchResults = function(location, capacity, date, callback) {
     $.ajax({
       url: '/api/kitchens',
       data: {
@@ -34,6 +34,7 @@
           .text('$' + parseFloat(result.fee).toFixed(2)));
         $('#search-results').append($result);
       });
+      callback(res);
     });
   }
 
@@ -46,5 +47,6 @@
   });
 
   // Show initial search results based on query string
-  getSearchResults(query.location, query.guests, query.date);
+  getSearchResults(query.location, query.guests, query.date, drawMarkers);
+
 </script>

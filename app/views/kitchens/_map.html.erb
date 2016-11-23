@@ -9,28 +9,25 @@
 <div id="map"></div>
 
 <script>
+  initMap();
+  var map;
+  function drawMarkers(kitchens) {
+    console.log('map', map);
+    console.log('pins', kitchens);
+    for (i=0; i < kitchens.length; i++ ) {
+      var marker = new google.maps.Marker({
+        position: {lat: kitchens[i].latitude, lng: kitchens[i].longitude},
+        map: map
+      });
+    }
+  }
+
   function initMap() {
     // TODO instead of center on melbourne get GPS cordinates of the user's browser
     var melbourne = {lat: -37.813628, lng: 144.963053};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 6,
+    map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 16,
       center: melbourne
     });
-
-    $.ajax({
-      url: '/api/kitchens'
-    }).done(function(res) {
-
-      for (i=0; i < res.length; i++ ) {
-        var marker = new google.maps.Marker({
-          position: {lat: res[i].latitude, lng: res[i].longitude},
-          map: map
-        });
-      }
-    });
   }
-</script>
-
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCWcPbEpnUQeSmO0w1e02F33iBy614JM&callback=initMap">
 </script>
