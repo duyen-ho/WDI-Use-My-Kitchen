@@ -1,0 +1,41 @@
+<style>
+  #map {
+    height: 400px;
+    width: 100%;
+   }
+</style>
+
+
+<div id="map"></div>
+
+<script>
+  function initMap() {
+    var uluru = {lat: -25.363, lng: 131.044};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: uluru
+    });
+
+    for (i=0; i < dummy_data.length; i++ ) {
+      var marker = new google.maps.Marker({
+        position: dummy_data[i],
+        map: map
+      });
+    }
+  }
+
+// TODO dummy_data needs to be replaced with the search results data
+   var dummy_data = [{lat: -27.363, lng: 134.044}, {lat: -23.363, lng: 129.044}, {lat: -23.363, lng: 140.044}]
+
+   $.ajax({
+     url: '/api/kitchens'
+   }).done(function(res) {
+     console.log(res);
+     return res
+   });
+
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfCWcPbEpnUQeSmO0w1e02F33iBy614JM&callback=initMap">
+</script>
