@@ -1,25 +1,57 @@
-<a href="/kitchens/new">Add listing</a>
+<% if logged_in? %>
+  <a href="/kitchens/new">Add listing</a>
+<% end %>
 
-<section id="search-form">
-</section>
+<div class="row">
+  <section id="sidebar" class="col s4">
+    <section>
+      <form id="search-form">
+        <label for="location">Location</label>
+        <input id="location" type="text">
+        <label for="date">Date</label>
+        <input id="date" type="date">
+        <label for="guests">Room for </label>
+        <input id="guests" type="number">
+        <label for="price-range">Price range</label>
+        <div id="price-range"></div>
+        <button>Search</button>
+      </form>
+    </section>
 
-<section id="search-results">
-</section>
+    <section id="search-results">
+    </section>
+  </section>
 
-<%= render "map" %>
+  <%= render "map" %>
+</div>
 
 <script>
+  // Init price slider
+  var slider = document.getElementById('price-range');
+  noUiSlider.create(slider, {
+    start: [100, 1500],
+    connect: true,
+    step: 10,
+    range: {
+      min: 100,
+      max: 1500
+    }
+  });
+
   // Load search results
-  var getSearchResults = function(location, capacity, date, callback) {
+  var getSearchResults = function(query, callback) {
+    $('#search-results').empty();
+
     $.ajax({
       url: '/api/kitchens',
       data: {
-        location: location,
-        date: date,
-        guests: capacity
+        location: query.location,
+        date: query.date,
+        guests: query.guests,
+        min_price: query.minPrice,
+        max_price: query.maxPrice
       }
     }).done(function(res) {
-      console.log(res);
       res.forEach(function(result) {
         var $result = $('<div>');
         $result.append($('<div>')
@@ -47,6 +79,20 @@
   });
 
   // Show initial search results based on query string
-  getSearchResults(query.location, query.guests, query.date, drawMarkers);
+  getSearchResults(query, drawMarkers);
 
+  // Get search results on form submit
+  $('#search-form').submit(function(e) {
+    e.preventDefault();
+
+    var priceRange = slider.noUiSlider.get();
+
+    getSearchResults({
+        location: $('#location').val(),
+        date: $('#date').val(),
+        guests: $('#guests').val(),
+        minPrice: priceRange[0],
+        maxPrice: priceRange[1]
+      }, drawMarkers);
+  });
 </script>

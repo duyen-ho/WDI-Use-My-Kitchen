@@ -46,7 +46,9 @@
         $(e.target).trigger('reset');
       }
       else {
-        $bookingResult.text('Could not create booking. Please try again.');
+        res.errors.forEach(function(error) {
+          $bookingResult.append($('<div>').text(error));
+        });
       }
     });
   });

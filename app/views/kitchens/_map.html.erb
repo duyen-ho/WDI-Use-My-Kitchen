@@ -1,24 +1,33 @@
 <style>
   #map {
-    height: 400px;
+    height: 600px;
     width: 100%;
    }
 </style>
 
 
-<div id="map"></div>
+<div class="col s8">
+  <div id="map"></div>
+</div>
 
 <script>
   initMap();
   var map;
+  var markers = [];
+
   function drawMarkers(kitchens) {
-    console.log('map', map);
-    console.log('pins', kitchens);
-    for (i=0; i < kitchens.length; i++ ) {
-      var marker = new google.maps.Marker({
-        position: {lat: kitchens[i].latitude, lng: kitchens[i].longitude},
+    // Remove existing markers
+    while (markers.length > 0) {
+      marker = markers.shift();
+      marker.setMap(null);
+    }
+
+    // Plot kitchens on map
+    for (var i = 0; i < kitchens.length; i++) {
+      markers.push(new google.maps.Marker({
+        position: { lat: kitchens[i].latitude, lng: kitchens[i].longitude },
         map: map
-      });
+      }));
     }
   }
 

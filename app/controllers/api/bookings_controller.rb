@@ -27,12 +27,15 @@ class Api::BookingsController < ApplicationController
 
     json_result = {}
 
-    if kitchen.available?(booking.booking_date) && booking.save
-      json_result[:success] = true
-      json_result[:result] = booking.to_json
-    else
+    if !kitchen.available?(booking.booking_date)
       json_result[:success] = false
-      json_result[:erros] = booking.errors.messages.to_json
+      json_result[:errors] = ['Kitchen is not available on this date']
+    elsif !booking.save
+      json_result[:success] = false
+      json_result[:errors] = booking.errors.full_messages
+    else
+      json_result[:success] = true
+      json_result[:booking] = booking
     end
 
     render json: json_result
