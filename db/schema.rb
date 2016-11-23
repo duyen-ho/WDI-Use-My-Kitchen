@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123033106) do
+ActiveRecord::Schema.define(version: 20161123045546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20161123033106) do
     t.integer  "kitchen_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "booking_id"
+    t.index ["booking_id"], name: "index_kitchen_reviews_on_booking_id", using: :btree
     t.index ["kitchen_id"], name: "index_kitchen_reviews_on_kitchen_id", using: :btree
     t.index ["user_id"], name: "index_kitchen_reviews_on_user_id", using: :btree
   end
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 20161123033106) do
   add_foreign_key "bookings", "kitchens"
   add_foreign_key "bookings", "users"
   add_foreign_key "kitchen_photos", "kitchens"
+  add_foreign_key "kitchen_reviews", "bookings"
   add_foreign_key "kitchen_reviews", "kitchens"
   add_foreign_key "kitchen_reviews", "users"
   add_foreign_key "kitchens", "users"
