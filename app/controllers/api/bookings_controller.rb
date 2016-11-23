@@ -14,20 +14,20 @@ class Api::BookingsController < ApplicationController
   def create
     # TODO: Consume message text
     booking = Booking.new
-    listing = Kitchen.find_by(id: params[:kitchen_id])
+    kitchen = Kitchen.find_by(id: params[:kitchen_id])
 
-    booking.booking_date = Time.new(params[:booking_date])
+    booking.booking_date = Date.parse(params[:booking_date])
     booking.note = params[:note]
     # TODO: Set different default state
     booking.status = 'CONFIRMED'
     # TODO: Calculate full booking fee
-    booking.fee = listing.fee
+    booking.fee = kitchen.fee
     booking.kitchen_id = params[:kitchen_id]
     booking.user_id = session[:user_id]
 
     json_result = {}
 
-    if booking.save
+    if kitchen.available?(booking.booking_date) && booking.save
       json_result[:success] = true
       json_result[:result] = booking.to_json
     else
