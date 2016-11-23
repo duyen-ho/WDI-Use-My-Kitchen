@@ -18,7 +18,7 @@ class Api::KitchensController < ApplicationController
     kitchen.capacity = params[:capacity].to_i
     kitchen.fee = params[:fee].to_d
     # TODO Change to current user ID
-    kitchen.user_id = 1
+    kitchen.user_id = current_user.id
 
     json_result = {}
 
