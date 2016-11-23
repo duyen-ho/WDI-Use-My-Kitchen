@@ -39,15 +39,17 @@
   });
 
   // Load search results
-  var getSearchResults = function(location, date, guests, callback) {
+  var getSearchResults = function(query, callback) {
     $('#search-results').empty();
 
     $.ajax({
       url: '/api/kitchens',
       data: {
-        location: location,
-        date: date,
-        guests: guests
+        location: query.location,
+        date: query.date,
+        guests: query.guests,
+        min_price: query.minPrice,
+        max_price: query.maxPrice
       }
     }).done(function(res) {
       res.forEach(function(result) {
@@ -77,16 +79,20 @@
   });
 
   // Show initial search results based on query string
-  getSearchResults(query.location, query.date, query.guests, drawMarkers);
+  getSearchResults(query, drawMarkers);
 
   // Get search results on form submit
   $('#search-form').submit(function(e) {
     e.preventDefault();
 
-    getSearchResults($('#location').val(),
-      $('#date').val(),
-      $('#guests').val(),
-      drawMarkers
-    );
+    var priceRange = slider.noUiSlider.get();
+
+    getSearchResults({
+        location: $('#location').val(),
+        date: $('#date').val(),
+        guests: $('#guests').val(),
+        minPrice: priceRange[0],
+        maxPrice: priceRange[1]
+      }, drawMarkers);
   });
 </script>

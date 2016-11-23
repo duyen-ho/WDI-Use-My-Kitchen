@@ -1,9 +1,29 @@
 class Api::KitchensController < ApplicationController
   # GET /api/kitchens
   def index
-    # kitchens = Kitchen.all
-    # on load parse query string
-    kitchens = Kitchen.where('suburb = ? AND capacity >= ?', URI.decode_www_form_component(params[:location]), params[:guests].to_i)
+    kitchens = Kitchen.all
+
+    # Filter results by args
+    # Get kitchens in area
+    if params[:location] && !params[:location].empty?
+      kitchens = kitchens.where('LOWER(suburb) = ?', URI.decode_www_form_component(params[:location]).downcase)
+    end
+    # Get kitchens that can hold given no of guests
+    if params[:guests] && !params[:guests].empty?
+      kitchens = kitchens.where('capacity >= ?', params[:guests].to_i)
+    end
+    # Get kitchens between a price range
+    if params[:min_price] && !params[:min_price].empty?
+      kitchens = kitchens.where('fee >= ?', params[:min_price].to_f)
+    end
+    if params[:max_price] && !params[:max_price].empty?
+      kitchens = kitchens.where('fee <= ?', params[:max_price].to_f)
+    end
+    # Get kitchens available on given date
+    if params[:date] && !params[:date].empty?
+      date = Date.parse(params[:date])
+      kitchens = kitchens.select{ |kitchen| kitchen.available?(date) }
+    end
 
     render json: kitchens
 
