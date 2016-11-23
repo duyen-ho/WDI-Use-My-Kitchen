@@ -10,22 +10,34 @@
 
 <script>
   // Load search results
-  $.ajax({
-    url: '/api/kitchens'
-  }).done(function(res) {
-    res.forEach(function(result) {
-      var $result = $('<div>');
-      $result.append($('<div>')
-        .append($('<h2>')
-          .append($('<a>')
-            .attr('href', '/kitchens/' + result.id)
-            .text(result.title)
-          )));
-      $result.append($('<div>')
-        .text(result.address + ', ' + result.state + ' - ' + result.country));
-      $result.append($('<div>')
-        .text('$' + parseFloat(result.fee).toFixed(2)));
-      $('#search-results').append($result);
-    });
+  var getSearchResults = function(location, capacity, date) {
+    $.ajax({
+      url: '/api/kitchens',
+      data: {
+        location: location,
+        date: date,
+        guests: capacity
+      }
+    }).done(function(res) {
+      console.log(res);
+      res.forEach(function(result) {
+        var $result = $('<div>');
+        $result.append($('<div>')
+          .append($('<h2>')
+            .append($('<a>')
+              .attr('href', '/kitchens/' + result.id)
+              .text(result.title)
+            )));
+        $result.append($('<div>')
+          .text(result.address + ', ' + result.state + ' - ' + result.country));
+        $result.append($('<div>')
+          .text('$' + parseFloat(result.fee).toFixed(2)));
+        $('#search-results').append($result);
+      });
   });
+}
+
+
+  getSearchResults("Melbourne", 20);
+
 </script>

@@ -2,7 +2,7 @@ class Api::KitchensController < ApplicationController
   # GET /api/kitchens
   def index
     # on load parse query string
-    kitchens = Kitchen.where('suburb = ? AND capacity >= ?', params[:location], params[:guests])
+    kitchens = Kitchen.where('suburb = ? AND capacity >= ?', params[:location], params[:guests].to_i)
 
     render json: kitchens
 
