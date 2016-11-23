@@ -1,0 +1,42 @@
+<h2>Book kitchen</h2>
+<form id="booking-form">
+  <input id="kitchen_id" type="hidden" value="<%= locals[:kitchen_id] %>">
+  <div>
+    <label for="booking-date">Booking date</label>
+    <input id="booking-date" type="date" class="datepicker">
+  </div>
+  <div>
+    <label for="booking-note">Notes</label>
+    <input id="booking-note" type="text">
+  </div>
+  <button>Submit booking</button>
+</form>
+<div id="booking-result"></div>
+
+<script>
+  var $bookingResult = $('#booking-result');
+  $('#booking-form').submit(function(e) {
+    e.preventDefault();
+    $bookingResult.empty();
+
+    $.ajax({
+      url: '/api/bookings',
+      method: 'post',
+      data: {
+        kitchen_id: $('#kitchen_id').val(),
+        booking_date: $('#booking-date').val(),
+        note: $('#booking-note').val(),
+        authenticity_token: '<%= form_authenticity_token %>'
+      }
+    })
+    .done(function(res) {
+      if (res.success) {
+        $bookingResult.text('Booking made successfully');
+        $(e.target).trigger('reset');
+      }
+      else {
+        $bookingResult.text('Could not create booking. Please try again.');
+      }
+    });
+  });
+</script>
