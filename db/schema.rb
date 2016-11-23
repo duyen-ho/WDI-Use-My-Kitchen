@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123011826) do
+ActiveRecord::Schema.define(version: 20161123033106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,17 @@ ActiveRecord::Schema.define(version: 20161123011826) do
     t.index ["kitchen_id"], name: "index_kitchen_photos_on_kitchen_id", using: :btree
   end
 
+  create_table "kitchen_reviews", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "score"
+    t.integer  "user_id"
+    t.integer  "kitchen_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["kitchen_id"], name: "index_kitchen_reviews_on_kitchen_id", using: :btree
+    t.index ["user_id"], name: "index_kitchen_reviews_on_user_id", using: :btree
+  end
+
   create_table "kitchens", force: :cascade do |t|
     t.text     "address"
     t.string   "suburb"
@@ -80,5 +91,7 @@ ActiveRecord::Schema.define(version: 20161123011826) do
   add_foreign_key "bookings", "kitchens"
   add_foreign_key "bookings", "users"
   add_foreign_key "kitchen_photos", "kitchens"
+  add_foreign_key "kitchen_reviews", "kitchens"
+  add_foreign_key "kitchen_reviews", "users"
   add_foreign_key "kitchens", "users"
 end
