@@ -12,7 +12,9 @@ class UsersController < ApplicationController
     user.description = params[:description]
     user.photo_url = params[:photo_url]
     if user.save
+      session[:user_id] = user.id
       redirect_to '/'
+
     else
       @errors = user.errors.messages
       render :new
