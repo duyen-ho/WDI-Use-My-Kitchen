@@ -29,9 +29,6 @@ class Kitchen < ApplicationRecord
   validates :postcode, length: { minimum: 4 }
   validates :postcode, presence: { message: "must be given please" }
 
-  validates :country, presence: { message: "must be given please" }
-  validates :country, format: { with: /\A[a-zA-Z]+\z/,
-      message: "only allows letters" }
 
   validates :capacity, presence: { message: "must be given please" }
 
