@@ -58,6 +58,11 @@ svg {
   border-radius: 2px;
 }
 
+/* Edit Form */
+#kitchen-form img {
+  width: 100%;
+}
+
 footer {
   margin-top: 0;
 }
