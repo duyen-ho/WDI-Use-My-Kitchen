@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  layout "login_signup", only: [:new]
 
   def new
   end

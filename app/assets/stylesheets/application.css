@@ -49,6 +49,23 @@ svg {
   margin-bottom: 4em;
 }
 
+.top-rule {
+  border-top: 1px solid #e2e2e2;
+}
+
+.multi-btn {
+  padding: .5rem 2rem;
+  height: 36px;
+  background-color: #26a69a;
+  border-radius: 2px;
+  color: #fff;
+  letter-spacing: .5px;
+  line-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 /* Navigation */
 nav li a {
   color: #fff;
@@ -65,6 +82,11 @@ nav li a {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Login */
+.member {
+  padding: 2rem 0;
+}
+
 /* Landing Page */
 .landing-page {
   padding-top: 5em;
@@ -75,18 +97,27 @@ nav li a {
 }
 
 .landing-page h1 {
-  margin: 0;
+  padding: 2rem;
   color: #fff;
+  letter-spacing: 0.1rem;
 }
 
-.landing-page p {
+.landing-page h3 {
   color: #fff;
+  font-weight: lighter;
+  letter-spacing: 0.1rem;
 }
 
 .landing-page input {
   background-color: #fff;
-  padding: 0.3em 0.5em;
+  padding: 0.2rem 0.5rem;
   border-radius: 2px;
+}
+
+.landing-page-contents {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  width: 65%;
 }
 
 /* Edit Form */
@@ -100,6 +131,7 @@ nav li a {
   border-radius: 50%;
 }
 
+/* Footer */
 footer {
   margin-top: 0;
 }
@@ -116,4 +148,9 @@ footer p {
 
 footer a:hover {
   color: blue;
+}
+
+.page-footer h4 {
+  color: #fff;
+  padding: 1rem 0;
 }
