@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/kitchens/:id', to: 'kitchens#show'
   get '/kitchens/:id/edit', to: 'kitchens#edit'
   get '/bookings', to: 'bookings#index'
+  get '/bookings/:id', to: 'bookings#show'
   # API endpoints
   post '/api/users', to: 'api/users#create'
   get '/api/kitchens', to: 'api/kitchens#index'
@@ -20,4 +21,7 @@ Rails.application.routes.draw do
   get '/session/new', to: 'session#new'
   post '/session', to: 'session#create'
   delete '/session', to: 'session#destroy'
+  # Kitchen reviews
+  post '/api/kitchens/reviews', to: 'api/kitchen_reviews#create'
+  get '/api/kitchens/reviews', to: 'api/kitchen_reviews#index'
 end

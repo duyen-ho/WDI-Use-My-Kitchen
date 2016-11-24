@@ -1,7 +1,14 @@
 <h2>Booking history</h2>
 
 <div id="bookings">
+  <h2>My bookings</h2>
 </div>
+
+<div id="reservations">
+  <h2>Upcoming Reservations</h2>
+</div>
+
+
 
 <script>
   $.ajax({
@@ -9,7 +16,7 @@
   })
   .done(function(response) {
     console.log(response);
-    response.forEach(function(result) {
+    response.bookings.forEach(function(result) {
       var $booking = $('<div>').addClass('card').addClass('row');
       $booking.append(
         $('<div>').addClass('card-content')
@@ -33,6 +40,32 @@
       });
 
       $('#bookings').append($booking);
+    })
+
+    response.reservations.forEach(function(result) {
+      var $booking = $('<div>').addClass('card').addClass('row');
+      $booking.append(
+        $('<div>').addClass('card-content')
+          .append($('<span>').addClass('card-title').text(result.booking_date))
+          .append($('<div>').text('$' + parseFloat(result.fee).toFixed(2)))
+          .append($('<p>').text(result.note))
+          .append($('<div>').text('Status: ' + result.status))
+      );
+        // <!-- # button to change booking status to 'Cancelled' -->
+      var $cancelButton = $('<a>').addClass('waves-effect waves-light btn cancel-booking-btn').text('Cancel');
+      $booking.append($cancelButton);
+      $cancelButton.click(function() {
+        $.ajax({
+          url: '/api/bookings/' + result.id,
+          method: 'patch'
+        })
+        .done(function(response) {
+          // do something
+          console.log(response);
+        });
+      });
+
+      $('#reservations').append($booking);
     })
   });
 

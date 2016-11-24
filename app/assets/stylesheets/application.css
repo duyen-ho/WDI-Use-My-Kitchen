@@ -14,13 +14,34 @@
  *= require_self
  */
 
-h2 {
-  text-align: center;
+html {
+  font-size: 16px;
 }
 
-.profile-image {
-  width: 100%;
-  border-radius: 50%;
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+svg {
+  margin: .7em;
+  fill: #fff;
+  height: 40px;
 }
 
 .margin {
@@ -28,14 +49,9 @@ h2 {
   margin-bottom: 4em;
 }
 
-svg {
-  margin: .7em;
-  fill: #000;
-  height: 40px;
-}
-
+/* Navigation */
 nav li a {
-  color: #000;
+  color: #fff;
 }
 
 #logout-btn {
@@ -46,7 +62,7 @@ nav li a {
 }
 
 #logout-btn:hover {
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Landing Page */
@@ -78,6 +94,12 @@ nav li a {
   width: 100%;
 }
 
+/* Users */
+.profile-image {
+  width: 100%;
+  border-radius: 50%;
+}
+
 footer {
   margin-top: 0;
 }
@@ -86,8 +108,10 @@ footer.page-footer {
   margin-top: 0;
 }
 
-footer a {
-  color: #000;
+footer h5,
+footer a,
+footer p {
+  color: #fff;
 }
 
 footer a:hover {

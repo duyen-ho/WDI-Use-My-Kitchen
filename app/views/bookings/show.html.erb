@@ -1,0 +1,38 @@
+<h1>Review Page</h1>
+
+
+<%= @booking.note %>
+<%= @booking.status %>
+<%= @booking.fee %>
+<%= @booking.user_id %>
+
+<div>
+  <%= form_tag '/api/kitchens/reviews', method: 'post', id: 'kitchenReview-form' do %>
+    <label for="">score</label>
+    <input type="text" id="score" name="score">
+    <label for="">content</label>
+    <input type="text" id="content" name="content">
+    <button>submit</button>
+  <% end %>
+</div>
+
+<script>
+  var booking_id = window.location.pathname.match(/\d+/)[0];
+
+  $('#kitchenReview-form').submit(function(e) {
+    e.preventDefault();
+
+  $.ajax({
+    url: '/api/kitchens/reviews',
+    method: 'post',
+    data: {
+      score: $('#score').val(),
+      content: $('#content').val(),
+      booking_id: booking_id,
+      authenticity_token: '<%= form_authenticity_token %>',
+    }
+  }).done(function(res) {
+    console.log(res)
+  })
+});
+</script>

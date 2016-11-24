@@ -1,29 +1,58 @@
-<% if logged_in? %>
-  <a href="/kitchens/new">Add listing</a>
-<% end %>
+<%# if logged_in? %>
+  <!-- <a href="/kitchens/new">Add listing</a> -->
+<%# end %>
 
-<div class="row">
-  <section id="sidebar" class="col s4">
-    <section>
-      <form id="search-form">
-        <label for="location">Location</label>
-        <input id="location" type="text">
-        <label for="date">Date</label>
-        <input id="date" type="date">
-        <label for="guests">Room for </label>
-        <input id="guests" type="number">
-        <label for="price-range">Price range</label>
-        <div id="price-range"></div>
-        <button>Search</button>
-      </form>
+<div id="search" class="row col s12">
+
+  <div id="search-wrapper" class="row col s7">
+    <h2>Search</h2>
+
+    <form id="search-form">
+      <div class="row">
+        <div class="col s6">
+          <label for="location">Location</label>
+          <input id="location" type="text">
+        </div>
+        <div class="col s4">
+          <label for="date">Date</label>
+          <input id="date" type="date">
+        </div>
+        <div class="col s2">
+          <label for="guests">Room for </label>
+          <input id="guests" type="number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s10">
+          <label for="price-range">Price range</label>
+          <div id="price-range"></div>
+        </div>
+        <div class="col s1">
+          <button class="waves-effect waves-light btn-large">Filter</button>
+        </div>
+      </div>
+    </form>
+    <h2>Kitchens</h2>
+    <section id="search-results" class="row col s12">
     </section>
 
-    <section id="search-results">
-    </section>
+    <div class="search-footer">
+      <div class="row">
+        <div class="col s12">
+          <h5>Use My Kitchen</h5>
+          <p>© 2016 | Project by Fiver</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <section id="search-map" class="row col s5">
+    <%= render "map" %>
   </section>
 
-  <%= render "map" %>
 </div>
+
 
 <script>
   // Init price slider
@@ -53,16 +82,20 @@
       }
     }).done(function(res) {
       res.forEach(function(result) {
-        var $result = $('<div>');
-        $result.append($('<div>')
-          .append($('<h2>')
+        var $result = $('<div>').attr('class', 'col s6');
+
+        $result.append($('<img>').attr('src', "http://placehold.it/300x200"))
+
+          .append($('<div>')
+          .append($('<h4>')
             .append($('<a>')
               .attr('href', '/kitchens/' + result.id)
               .text(result.title)
             )));
-        $result.append($('<div>')
+        $result.append($('<p>')
           .text(result.address + ', ' + result.state + ' - ' + result.country));
-        $result.append($('<div>')
+        $result.append($('<p>')
+          .attr('class', 'price')
           .text('$' + parseFloat(result.fee).toFixed(2)));
         $('#search-results').append($result);
       });

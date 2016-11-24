@@ -2,6 +2,7 @@ class Kitchen < ApplicationRecord
 
   belongs_to :user
   has_many :kitchen_photos
+  has_many :kitchen_reviews
 
   geocoded_by :full_street_address
   after_validation :geocode

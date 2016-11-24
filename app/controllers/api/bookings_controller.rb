@@ -2,11 +2,17 @@ class Api::BookingsController < ApplicationController
   # GET /api/bookings
   # Return current user's booking history
   def index
-    bookings = Booking
+    # TODO: Filter only upcoming bookings for current user
+    result = {}
+    kitchen = Kitchen.find_by(user_id: session[:user_id])
+    result[:reservations] = Booking
+      .where(kitchen_id: kitchen.id)
+      .order('booking_date DESC')
+    result[:bookings] = Booking
       .where(user_id: session[:user_id])
       .order('booking_date DESC')
-    # TODO: Filter only upcoming bookings for current user
-    render json: bookings
+
+    render json: result
   end
 
   # POST /api/bookings
@@ -57,4 +63,6 @@ class Api::BookingsController < ApplicationController
 
     render json: json_result
   end
+
+
 end
