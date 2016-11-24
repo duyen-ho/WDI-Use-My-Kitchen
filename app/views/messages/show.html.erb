@@ -1,0 +1,55 @@
+<section id="messages">
+</section>
+
+<section id="new-message">
+  <form id="message-form">
+    <label for="message-body">Message</label>
+    <textarea id="message-body" id="" cols="30" rows="10"></textarea>
+    <button>Send</button>
+  </form>
+</section>
+
+<script>
+  var $messages = $('#messages');
+
+  // Load conversation between current user and conversation partner
+  var loadMessages = function() {
+
+    $.ajax({
+      url: "/api/messages/<%= @partner_id %>"
+    })
+    .done(function(response) {
+      $messages.empty();
+      response.forEach(function(message) {
+        var $message = $('<div>').addClass('card');
+        $message.append($('<div>')
+          .append($('<span>').text(message.sender.name))
+          .append($('<div>').append(message.content))
+          .append($('<div>').append(message.created_at)));
+        $messages.append($message);
+      });
+    });
+  }
+
+  // Post new message on submit
+  $('#message-form').submit(function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: '/api/messages',
+      method: 'post',
+      data: {
+        authenticity_token: '<%= form_authenticity_token %>',
+        content: $('#message-body').val(),
+        recipient_id: '<%= @partner_id %>'
+      }
+    })
+    .done(function(res) {
+      // TODO: Deal with error
+      loadMessages();
+      $(e.target).trigger('reset');
+    })
+  });
+
+  loadMessages();
+</script>

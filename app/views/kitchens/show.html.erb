@@ -51,11 +51,12 @@
           </div>
         </div>
       </div>
-      <% if current_user.id == @kitchen.user_id %>
+      <%# if current_user.id == @kitchen.user_id %>
       <div>
         <a class="multi-btn" href="/kitchens/<%= @kitchen.id %>/edit">Edit</a>
       </div>
-      <% end %>
+      <%# end %>
+
     </div>
     <div id="booking-form" class="col s4">
       <%= render "/bookings/new", locals: { kitchen_id: @kitchen.id } %>
