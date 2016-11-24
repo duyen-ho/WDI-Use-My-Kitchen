@@ -2,8 +2,8 @@
   <div class="col s2 offset-s3">
     <img class="profile-image" src="<%= @user.photo_url %>">
   </div>
-  <div class="col s6">
-    <h4>Hi, I'm <%= @user.name %>!</h4>
+  <div class="col s6 user-details">
+    <h3>Hi, I'm <%= @user.name.capitalize %>!</h3>
     <!-- TODO: Format month, year -->
     <h5>Member since <%= @user.created_at %></h5>
     <p><%= @user.description %></p>
