@@ -48,10 +48,9 @@
           // TO DO not hardcode
 
         //   window.location = '/bookings/booking_id'
-        // });
-
-
           window.location = '/bookings/' + result.id
+        });
+
       });
 
       $('#bookings').append($booking);
@@ -82,7 +81,7 @@
 
 
       $('#reservations').append($booking);
-    })
+    });
   });
 
 </script>
