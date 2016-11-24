@@ -35,7 +35,7 @@ h4 {
 }
 
 h5 {
-
+  
 }
 
 svg {
@@ -92,6 +92,7 @@ nav li a {
 /* Search Results */
 #search {
   margin-bottom: 0px;
+  /*height: 100vh;*/
 }
 
 #search h2 {
@@ -144,6 +145,20 @@ nav li a {
 #map {
   height: 100vh;
 }
+
+.search-footer div div {
+  border-top: 1px solid #ececec;
+}
+
+.search-footer h5 {
+  margin-top: 2rem;
+}
+
+.search-footer h5,
+.search-footer p {
+  color: #000;
+}
+
 
 /* Edit Form */
 #kitchen-form img {
