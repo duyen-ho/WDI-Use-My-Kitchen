@@ -80,8 +80,12 @@
       res.forEach(function(result) {
         var $result = $('<div>').attr('class', 'col s6');
 
-        // console.log(result.kitchen_photos[0])
-        $result.append($('<img>').attr('src', "http://placehold.it/300x200"))
+        // TODO loop through to append multiple images
+        if (result['kitchen_photos'][0]) {
+          var image_url = result['kitchen_photos'][0]['image_url']
+        }
+
+        $result.append($('<img>').attr('src', image_url))
 
           .append($('<div>')
           .append($('<h4>')
