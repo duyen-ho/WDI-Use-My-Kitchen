@@ -38,6 +38,19 @@
           console.log(response);
         });
       });
+      var $reviewButton = $('<a>').addClass('waves-effect waves-light btn review-booking-btn').text('Review');
+      $booking.append($reviewButton);
+      $reviewButton.click(function() {
+        $.ajax({
+          url: '/api/bookings/' + result.id,
+          method: 'patch'
+        })
+        .done(function(response) {
+          // TO DO not hardcode
+        
+          window.location = '/bookings/booking_id'
+        });
+      });
 
       $('#bookings').append($booking);
     })
