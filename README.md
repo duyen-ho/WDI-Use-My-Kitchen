@@ -1,24 +1,31 @@
-# README
+# Use My Kitchen
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- **[Live demo](http://use-my-kitchen.herokuapp.com/)**
+- User stories
+- Wireframes
 
-Things you may want to cover:
+Like AirBnB but for finding kitchen and dining spaces for your next dinner party.
 
-* Ruby version
+## Technologies used
+- Ruby
+- Ruby on Rails + ActiveRecord
+- PostgreSQL
+- HTML + CSS
+- JavaScript + jQuery + AJAX
 
-* System dependencies
+## Installation instructions
+```
+bundle install
+rails db:create
+rails db:migrate
+rails s
+```
 
-* Configuration
+## Unsolved problems
+- TODO
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Future updates
+- Add Google Maps autocomplete input
+- Implement proximity-based search
+- Booking confirmation
+- Payment gateway integration
