@@ -8,5 +8,10 @@
     <h5>Member since <%= @user.created_at %></h5>
     <p><%= @user.description %></p>
     <p><%= @user.email %></p>
+    <% if logged_in? %>
+    <p>
+      <a class="waves-effect waves-light btn" href="/messages/<%= @user.id %>">Message</a>
+    </p>
+    <% end %>
   </div>
 </div>
