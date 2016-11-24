@@ -1,4 +1,5 @@
 class Api::KitchensController < ApplicationController
+
   # GET /api/kitchens
   def index
     kitchens = Kitchen.all
@@ -24,6 +25,10 @@ class Api::KitchensController < ApplicationController
       date = Date.parse(params[:date])
       kitchens = kitchens.select{ |kitchen| kitchen.available?(date) }
     end
+
+    # Get associated photo
+    # TODO Get associated photos
+    kitchens = kitchens.as_json(include: :kitchen_photos)
 
     render json: kitchens
 
