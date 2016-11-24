@@ -1,0 +1,25 @@
+<h1>Conversations</h1>
+
+<div id="conversations">
+</div>
+
+<script>
+  var $conversations = $('#conversations');
+
+  // Load list of conversations
+  $.ajax({
+    url: '/api/messages'
+  })
+  .done(function(response) {
+    response.forEach(function(conversation) {
+      var $conversation = $('<div>')
+        .addClass('card')
+        .append($('<a>')
+          .addClass('card-title')
+          .attr('href', '/messages/' + conversation.user.id)
+          .text(conversation.user.name));
+
+      $conversations.append($conversation);
+    });
+  })
+</script>
