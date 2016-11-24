@@ -1,0 +1,28 @@
+<section id="messages">
+</section>
+
+<section id="new-message">
+  <form id="message-form">
+    <label for="message-body">Message</label>
+    <textarea id="message-body" id="" cols="30" rows="10"></textarea>
+  </form>
+</section>
+
+<script>
+  var $messages = $('#messages');
+
+  // Load conversation between current user and conversation partner
+  $.ajax({
+    url: "/api/messages/<%= @partner_id %>"
+  })
+  .done(function(response) {
+    response.forEach(function(message) {
+      var $message = $('<div>').addClass('card');
+      $message.append($('<div>')
+        .append($('<span>').text(message.sender.name))
+        .append($('<div>').append(message.content))
+        .append($('<div>').append(message.created_at)));
+      $messages.append($message);
+    });
+  });
+</script>

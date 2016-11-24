@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/bookings', to: 'bookings#index'
   get '/bookings/:id', to: 'bookings#show'
   get '/messages', to: 'messages#index'
+  get '/messages/:user_id', to: 'messages#show'
 
   # API endpoints
   post '/api/users', to: 'api/users#create'
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   post '/api/bookings', to: 'api/bookings#create'
   patch '/api/bookings/:id', to: 'api/bookings#cancel'
   get '/api/messages', to: 'api/messages#index'
+  get '/api/messages/:user_id', to: 'api/messages#show'
   # Sessions
   get '/session/new', to: 'session#new'
   post '/session', to: 'session#create'
