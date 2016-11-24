@@ -1,26 +1,56 @@
+<style>
+  .kitchen-image {
+    height: 60vh;
+    background-image: url("<%= @kitchen_photo.image_url %>");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+</style>
+
 <div class="kitchen-image">
-  <img src="http://hbu.h-cdn.co/assets/16/23/1600x800/landscape-1465239399-industrial-kitchen.jpg">
 </div>
 
-<section id="kitchen-details">
+<div class="container">
+  <div class="row">
+    <div id="kitchen-details" class="col s8">
 
-  <h3><%= @kitchen.title %></h3>
-  <div>
-    <%= "#{@kitchen.address}, #{@kitchen.state} - #{@kitchen.country}" %>
+      <div class="kitchen-summary">
+        <h2><%= @kitchen.title %></h2>
+        <p><%= "#{@kitchen.address}, #{@kitchen.state} - #{@kitchen.country}" %></p>
+      </div>
+      <div class="kitchen-text">
+        <h3>About</h3>
+        <p><%= @kitchen.description %></p>
+      </div>
+      <div class=" kitchen-snapshot">
+        <div class="row">
+          <div class="col s3">
+            <h4>Capacity</h4>
+          </div>
+          <div class="col s9">
+            <h5 class="capacity"><%= @kitchen.capacity %></h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s3">
+            <h4>Price</h4>
+          </div>
+          <div class="col s9">
+            <h5 class="capacity"><%= @kitchen.fee %></h5>
+          </div>
+        </div>
+      </div>
+
+      <% if current_user.id == @kitchen.user_id %>
+      <div>
+        <a class="edit-btn" href="/kitchens/<%= @kitchen.id %>/edit">Edit</a>
+      </div>
+      <% end %>
+
+    </div>
+    <div id="booking-form" class="col s4">
+      <%= render "/bookings/new", locals: { kitchen_id: @kitchen.id } %>
+    </div>
   </div>
-
-  <h3>About</h3>
-  <p><%= @kitchen.description %></p>
-
-  <h3>The Kitchen</h3>
-  <span class="capacity">Capacity: <%= @kitchen.capacity %></span>
-  <span class="fee">Price: <%= @kitchen.fee %></span>
-</section>
-
-<div>
-  <a href="/kitchens/<%= @kitchen.id %>/edit">Edit</a>
 </div>
-
-<section id="booking-form">
-  <%= render "/bookings/new", locals: { kitchen_id: @kitchen.id } %>
-</section>

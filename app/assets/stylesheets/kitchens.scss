@@ -66,3 +66,45 @@
 .search-footer p {
   color: #000;
 }
+
+// Kitchen Show
+#kitchen-details {
+  margin-top: 1.5rem;
+}
+
+#kitchen-details h3,
+#kitchen-details p {
+  padding: .5em 0;
+}
+
+.kitchen-summary {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ececec;
+}
+
+.kitchen-text {
+  padding: 1rem 0;
+  border-bottom: 1px solid #ececec;
+}
+
+.kitchen-snapshot {
+  padding: 2rem 0;
+}
+
+.kitchen-snapshot h5 {
+  vertical-align: bottom;
+  margin: 0;
+}
+
+.edit-btn {
+  padding: .5rem 2rem;
+  height: 36px;
+  background-color: #26a69a;
+  border-radius: 2px;
+  color: #fff;
+  letter-spacing: .5px;
+  line-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}

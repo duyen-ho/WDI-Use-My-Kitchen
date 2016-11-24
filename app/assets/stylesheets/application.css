@@ -27,7 +27,7 @@ h2 {
 }
 
 h3 {
-
+  font-size: 1.7rem;
 }
 
 h4 {
@@ -35,7 +35,7 @@ h4 {
 }
 
 h5 {
-
+  font-size: 1rem;
 }
 
 svg {
@@ -88,9 +88,6 @@ nav li a {
   padding: 0.3em 0.5em;
   border-radius: 2px;
 }
-
-
-
 
 /* Edit Form */
 #kitchen-form img {

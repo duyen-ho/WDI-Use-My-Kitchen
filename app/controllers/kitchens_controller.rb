@@ -9,7 +9,7 @@ class KitchensController < ApplicationController
 
   def show
     @kitchen = Kitchen.find_by(id: params[:id])
-
+    @kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
     if @kitchen
       render :show
     else
