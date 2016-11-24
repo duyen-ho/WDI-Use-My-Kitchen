@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch '/api/kitchens/:id', to: 'api/kitchens#update'
   get '/api/bookings', to: 'api/bookings#index'
   post '/api/bookings', to: 'api/bookings#create'
+  patch '/api/bookings/:id', to: 'api/bookings#cancel'
   # Sessions
   get '/session/new', to: 'session#new'
   post '/session', to: 'session#create'

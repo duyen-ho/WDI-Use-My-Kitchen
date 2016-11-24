@@ -40,4 +40,21 @@ class Api::BookingsController < ApplicationController
 
     render json: json_result
   end
+
+  # PATCH /api/bookings/:id
+  # Cancel selected booking
+  def cancel
+    booking = Booking.find_by(id: params[:id])
+    booking.status = 'CANCELLED'
+
+    json_result = {}
+
+    if booking.save
+      json_result[:success] = true
+    else
+      json_result[:success] = false
+    end
+
+    render json: json_result
+  end
 end

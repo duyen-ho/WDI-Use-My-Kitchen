@@ -10,7 +10,7 @@
   .done(function(response) {
     console.log(response);
     response.forEach(function(result) {
-      var $booking = $('<div>').addClass('card');
+      var $booking = $('<div>').addClass('card').addClass('row');
       $booking.append(
         $('<div>').addClass('card-content')
           .append($('<span>').addClass('card-title').text(result.booking_date))
@@ -18,7 +18,22 @@
           .append($('<p>').text(result.note))
           .append($('<div>').text('Status: ' + result.status))
       );
+        // <!-- # button to change booking status to 'Cancelled' -->
+      var $cancelButton = $('<a>').addClass('waves-effect waves-light btn cancel-booking-btn').text('Cancel');
+      $booking.append($cancelButton);
+      $cancelButton.click(function() {
+        $.ajax({
+          url: '/api/bookings/' + result.id,
+          method: 'patch'
+        })
+        .done(function(response) {
+          // do something
+          console.log(response);
+        });
+      });
+
       $('#bookings').append($booking);
     })
   });
+
 </script>
