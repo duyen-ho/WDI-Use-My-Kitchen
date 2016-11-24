@@ -21,7 +21,7 @@
 
   <body>
 
-    <nav class="blue-grey lighten-3">
+    <nav class="orange">
       <div class="nav-wrapper">
         <a href="/">
           <svg viewBox="0 0 249.308 75.734">
@@ -31,7 +31,7 @@
             </g>
           </svg>
         </a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <ul id="nav-mobile" class="right">
           <% if logged_in? %>
           <li><a href="/users/<%=current_user.id%>">Hi <%= current_user.name.capitalize %>!</a></li>
           <li><a href="/kitchens/new">Add Kitchen</a></li>
@@ -54,7 +54,7 @@
       <%= yield %>
     </main>
 
-    <footer class="page-footer blue-grey lighten-3">
+    <footer class="page-footer orange">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
