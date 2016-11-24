@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_secure_password
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
   has_many :received_messages, class_name: "Message", foreign_key: "recipient_id"
+  has_many :sent_reviews, class_name: "UserReview", foreign_key: "reviewer_id"
+  has_many :received_reviews, class_name: "UserReview", foreign_key: "reviewee_id"
 
   validates :name, presence: true
   validates :name, length: { minimum: 2 }
