@@ -63,4 +63,6 @@ class Api::BookingsController < ApplicationController
 
     render json: json_result
   end
+
+
 end
