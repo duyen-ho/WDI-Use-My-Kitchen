@@ -1,11 +1,5 @@
 <h1>Review Page</h1>
 
-
-<%= @booking.note %>
-<%= @booking.status %>
-<%= @booking.fee %>
-<%= @booking.user_id %>
-
 <div>
   <%= form_tag '/api/kitchens/reviews', method: 'post', id: 'kitchenReview-form' do %>
     <label for="">score</label>
