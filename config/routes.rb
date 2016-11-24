@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   patch '/api/bookings/:id', to: 'api/bookings#cancel'
   get '/api/messages', to: 'api/messages#index'
   get '/api/messages/:user_id', to: 'api/messages#show'
+  post '/api/messages', to: 'api/messages#create'
   # Sessions
   get '/session/new', to: 'session#new'
   post '/session', to: 'session#create'

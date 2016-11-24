@@ -33,4 +33,29 @@ class Api::MessagesController < ApplicationController
       }
     }
   end
+
+  # POST /api/messages
+  # Create new message
+  def create
+    message = Message.new
+    message.content = params[:content]
+    message.sender_id = session[:user_id]
+    message.recipient_id = params[:recipient_id]
+
+    if message.save
+      render json: {
+        success: true,
+        result: message.as_json(include: {
+          sender: {
+            only: [:id, :name]
+          }
+        })
+      }
+    else
+      render json: {
+        success: false,
+        errors: message.errors.full_messages
+      }
+    end
+  end
 end
