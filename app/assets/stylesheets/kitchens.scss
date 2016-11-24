@@ -1,3 +1,68 @@
-// Place all the styles related to the kitchens controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Search Results */
+#search {
+  margin-bottom: 0px;
+}
+
+#search h2 {
+  padding: .5rem;
+}
+
+#search h2:nth-of-type(2) {
+  padding-top: 1.5rem;
+}
+
+#search h4 {
+  padding: 0.4rem 0;
+}
+
+#search-results div:nth-child(odd) {
+  padding-left: 0;
+}
+
+#search-results div:nth-child(even) {
+  padding-right: 0;
+}
+
+#search-results {
+  padding: .5rem;
+}
+
+#search-results img {
+  width: 100%;
+}
+
+.price {
+  padding-bottom: 1rem;
+}
+
+#search-wrapper {
+  margin-bottom: 0px;
+  padding: 1.5rem;
+  height: 100vh;
+  overflow: scroll;
+}
+
+#search-form {
+  border-bottom: 1px solid #ececec;
+}
+
+#search-map {
+  padding: 0;
+}
+
+#map {
+  height: 100vh;
+}
+
+.search-footer div div {
+  border-top: 1px solid #ececec;
+}
+
+.search-footer h5 {
+  margin-top: 2rem;
+}
+
+.search-footer h5,
+.search-footer p {
+  color: #000;
+}
