@@ -10,12 +10,14 @@ class KitchensController < ApplicationController
   def show
     @kitchen = Kitchen.find_by(id: params[:id])
     @kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
+
     if @kitchen
       render :show
     else
       @error = 'Kitchen not found'
       render :error
     end
+
   end
 
   def edit
@@ -23,7 +25,5 @@ class KitchensController < ApplicationController
     # TODO: Populate multiple photos
     @kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
   end
-
-
 
 end

@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  layout "login_signup", only: [:new]
 
   def new
   end

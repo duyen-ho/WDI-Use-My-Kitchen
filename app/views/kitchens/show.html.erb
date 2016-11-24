@@ -5,6 +5,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    background-color: #fff;
   }
 </style>
 
@@ -14,7 +15,6 @@
 <div class="container">
   <div class="row">
     <div id="kitchen-details" class="col s8">
-
       <div class="kitchen-summary">
         <h2><%= @kitchen.title %></h2>
         <p><%= "#{@kitchen.address}, #{@kitchen.state} - #{@kitchen.country}" %></p>
@@ -26,28 +26,36 @@
       <div class=" kitchen-snapshot">
         <div class="row">
           <div class="col s3">
-            <h4>Capacity</h4>
+            <h3>Capacity</h3>
           </div>
           <div class="col s9">
-            <h5 class="capacity"><%= @kitchen.capacity %></h5>
+            <h4 class="capacity"><%= @kitchen.capacity %> Guests</h4>
           </div>
         </div>
         <div class="row">
           <div class="col s3">
-            <h4>Price</h4>
+            <h3>Price</h3>
           </div>
           <div class="col s9">
-            <h5 class="capacity"><%= @kitchen.fee %></h5>
+            <h4 class="capacity">$<%= @kitchen.fee %></h4>
           </div>
         </div>
       </div>
+      <div class="kitchen-reviews">
+        <div class="row">
+          <div class="col s9">
+            <h3>Reviews</h3>
 
+            Placeholder for reviews
+
+          </div>
+        </div>
+      </div>
       <% if current_user.id == @kitchen.user_id %>
       <div>
-        <a class="edit-btn" href="/kitchens/<%= @kitchen.id %>/edit">Edit</a>
+        <a class="multi-btn" href="/kitchens/<%= @kitchen.id %>/edit">Edit</a>
       </div>
       <% end %>
-
     </div>
     <div id="booking-form" class="col s4">
       <%= render "/bookings/new", locals: { kitchen_id: @kitchen.id } %>
