@@ -22,6 +22,7 @@ class Api::KitchenReviewsController < ApplicationController
     json_result[:kitchen_review] = kitchen_review
     kitchen_review.save
     render json: json_result
+    
   end
 
 

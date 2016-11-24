@@ -32,7 +32,7 @@
       authenticity_token: '<%= form_authenticity_token %>',
     }
   }).done(function(res) {
-    console.log(res)
+      window.location = '/bookings/'
   })
 });
 </script>
