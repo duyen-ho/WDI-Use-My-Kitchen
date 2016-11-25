@@ -15,3 +15,16 @@
     <% end %>
   </div>
 </div>
+<div class="row margin">
+  <div class="col s6 offset-s3">
+    <h2>Kitchens</h2>
+    <% @user.kitchens.each do |kitchen| %>
+    <div class="kitchen card">
+      <h3><a href="/kitchens/<%= kitchen.id %>"><%= kitchen.title %></a></h3>
+      <div><%= "#{kitchen.suburb}, #{kitchen.state} - #{kitchen.country}" %></div>
+      <p><%= kitchen.description %></p>
+      <div>$<%= "%.2f" % kitchen.fee %></div>
+    </div>
+    <% end %>
+  </div>
+</div>
