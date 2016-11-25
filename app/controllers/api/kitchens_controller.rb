@@ -28,7 +28,7 @@ class Api::KitchensController < ApplicationController
 
     # Get associated photo
     # TODO Get associated photos
-    kitchens = kitchens.as_json(include: :kitchen_photos)
+    kitchens = kitchens.as_json(include: [:kitchen_photos, :kitchen_reviews])
 
     render json: kitchens
 
