@@ -49,6 +49,10 @@ svg {
   margin-bottom: 4em;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .top-rule {
   border-top: 1px solid #e2e2e2;
 }

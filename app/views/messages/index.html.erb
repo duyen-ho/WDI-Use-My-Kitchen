@@ -1,7 +1,14 @@
-<h1>Conversations</h1>
-
-<div id="conversations">
+<div class="row">
+  <div class="col s4 offset-s4 margin">
+    <h2>Conversations</h2>
+  </div>
 </div>
+
+<div class="row">
+  <div id="conversations" class="input-field col s4 offset-s4">
+  </div>
+</div>
+
 
 <script>
   var $conversations = $('#conversations');
@@ -15,7 +22,7 @@
       var $conversation = $('<div>')
         .addClass('card')
         .append($('<a>')
-          .addClass('card-title')
+          .addClass('card-title capitalize')
           .attr('href', '/messages/' + conversation.user.id)
           .text(conversation.user.name));
 

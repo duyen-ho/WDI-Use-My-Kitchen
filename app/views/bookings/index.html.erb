@@ -5,10 +5,10 @@
       <li class="tab col s3"><a href="#reservations">Reservations</li>
     </ul>
   </div>
-  <div id="bookings">
+  <div id="bookings" class="margin">
     <h2>My bookings</h2>
   </div>
-  <div id="reservations">
+  <div id="reservations" class="margin">
     <h2>Next Reservation</h2>
   </div>
 </div>
@@ -44,7 +44,7 @@
           }
         });
       });
-      var $reviewButton = $('<a>').addClass('waves-effect waves-light btn review-booking-btn col s1').text('Review');
+      var $reviewButton = $('<a>').addClass('waves-effect waves-light btn review-booking-btn col s1 offset-s1').text('Review');
       $reviewButton.click(function() {
         window.location = '/bookings/' + booking.id;
       });
@@ -71,12 +71,12 @@
       $booking.append(
         $('<div>').addClass('card-content')
           .append($('<span>').addClass('card-title col s3').text(moment(booking.booking_date).format('MMM Do YYYY')))
-          .append($('<div>').addClass('col s4').text('$' + parseFloat(booking.fee).toFixed(2)))
-          .append($('<p>').addClass('col s1').text(booking.note))
+          .append($('<p>').addClass('col s4').text(booking.note))
+          .append($('<div>').addClass('col s1').text('$' + parseFloat(booking.fee).toFixed(2)))
           .append($('<div>').addClass('col s1 booking-status').text('Status: ' + booking.status))
       );
         // <!-- # button to change booking status to 'Cancelled' -->
-      var $cancelButton = $('<a>').addClass('waves-effect waves-light btn cancel-booking-btn').text('Cancel');
+      var $cancelButton = $('<a>').addClass('waves-effect waves-light btn cancel-booking-btn col s1 offset-s1').text('Cancel');
       $booking.append($cancelButton);
       $cancelButton.click(function() {
         $.ajax({

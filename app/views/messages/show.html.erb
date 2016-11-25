@@ -1,10 +1,16 @@
+<div class="row">
+  <div class="col s4 offset-s4 margin">
+    <h2>My Messages</h2>
+  </div>
+</div>
+
 <section id="messages">
 </section>
 
 <section id="new-message">
   <form id="message-form">
     <label for="message-body">Message</label>
-    <textarea id="message-body" id="" cols="30" rows="10"></textarea>
+    <textarea id="message-body" class="materialize-textarea"></textarea>
     <button>Send</button>
   </form>
 </section>
@@ -23,7 +29,7 @@
       response.forEach(function(message) {
         var $message = $('<div>').addClass('card');
         $message.append($('<div>')
-          .append($('<span>').text(message.sender.name))
+          .append($('<span>').addClass('capitalize').text(message.sender.name))
           .append($('<div>').append(message.content))
           .append($('<div>').append(message.created_at)));
         $messages.append($message);
