@@ -5,7 +5,7 @@
   <div class="col s6 user-details">
     <h3 class="capitalize">Hi, I'm <%= @user.name.split(' ')[0].capitalize %></h3>
     <!-- TODO: Format month, year -->
-    <h5>Member since <%= @user.created_at %></h5>
+    <h5>Member since <%= @user.created_at.strftime('%B %Y') %></h5>
     <p><%= @user.description %></p>
     <p><%= @user.email %></p>
     <% if logged_in? %>

@@ -84,6 +84,8 @@
         // TODO loop through to append multiple images
         if (result['kitchen_photos'][0]) {
           var image_url = result['kitchen_photos'][0]['image_url']
+        } else {
+          var image_url = "http://placehold.it/350x200"
         }
 
         $result.append($('<img>').attr('src', image_url))

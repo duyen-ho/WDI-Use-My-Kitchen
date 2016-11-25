@@ -36,8 +36,8 @@
           <% if logged_in? %>
           <li><a href="/users/<%=current_user.id%>">Hi <%= current_user.name.split(' ')[0].capitalize %></a></li>
           <li><a href="/kitchens/new">Add Kitchen</a></li>
-          <li><a href="/bookings">My Bookings</a>
-          </li>
+          <li><a href="/bookings">My Bookings</a></li>
+          <li><a href="/messages">Messages</a></li>
           <li>
             <form action="/session" method="post">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
