@@ -66,21 +66,21 @@
     });
 
     // Show bookings made at current user's kitchens
-    response.reservations.forEach(function(result) {
+    response.reservations.forEach(function(booking) {
       var $booking = $('<div>').addClass('card').addClass('row');
       $booking.append(
         $('<div>').addClass('card-content')
-          .append($('<span>').addClass('card-title col s3').text(result.booking_date))
-          .append($('<div>').addClass('col s4').text('$' + parseFloat(result.fee).toFixed(2)))
-          .append($('<p>').addClass('col s1').text(result.note))
-          .append($('<div>').addClass('col s1 booking-status').text('Status: ' + result.status))
+          .append($('<span>').addClass('card-title col s3').text(moment(booking.booking_date).format('MMM Do YYYY')))
+          .append($('<div>').addClass('col s4').text('$' + parseFloat(booking.fee).toFixed(2)))
+          .append($('<p>').addClass('col s1').text(booking.note))
+          .append($('<div>').addClass('col s1 booking-status').text('Status: ' + booking.status))
       );
         // <!-- # button to change booking status to 'Cancelled' -->
       var $cancelButton = $('<a>').addClass('waves-effect waves-light btn cancel-booking-btn').text('Cancel');
       $booking.append($cancelButton);
       $cancelButton.click(function() {
         $.ajax({
-          url: '/api/bookings/' + result.id,
+          url: '/api/bookings/' + booking.id,
           method: 'patch'
         })
         .done(function(response) {

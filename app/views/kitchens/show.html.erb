@@ -45,9 +45,22 @@
         <div class="row">
           <div class="col s9">
             <h3>Reviews</h3>
-
-            Placeholder for reviews
-
+            <% total_score = 0 %>
+            <% @kitchen.kitchen_reviews.each do |review| %>
+              <%# Calculate average score for kitchen %>
+              <% total_score += review.score %>
+            <% end %>
+            <div>Average rating: <%= (total_score.to_f / @kitchen.kitchen_reviews.count).round(1) %></div>
+            <% @kitchen.kitchen_reviews.order('created_at DESC').each do |review| %>
+              <div class="review card row">
+                <p>
+                  <%= review.content %>
+                  <footer>
+                    - <%= review.user.name %> on <%= review.created_at.strftime("%b %-d %Y") %>
+                  </footer>
+                </p>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>
