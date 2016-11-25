@@ -20,8 +20,8 @@
       </div>
       <div class="row">
         <div class="col s10">
-          <label for="price-range">Price range</label>
           <div id="price-range"></div>
+          <label for="price-range">Price range</label>
         </div>
         <div class="col s1">
           <button class="waves-effect waves-light btn-large">Filter</button>
@@ -60,8 +60,10 @@
     range: {
       min: 100,
       max: 1500
-    }
+    },
+    tooltips: true,
   });
+
 
   // Load search results
   var getSearchResults = function(query, callback) {
