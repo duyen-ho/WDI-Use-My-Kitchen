@@ -6,7 +6,7 @@
     </ul>
   </div>
   <div id="bookings" class="margin">
-    <h2>My bookings</h2>
+    <h2>My Bookings</h2>
   </div>
   <div id="reservations" class="margin">
     <h2>Next Reservation</h2>
@@ -29,6 +29,8 @@
           .append($('<div>').addClass('col s1').text('$' + parseFloat(booking.fee).toFixed(2)))
           .append($('<div>').addClass('col s1 booking-status').text('Status: ' + booking.status))
       );
+
+      console.log(booking.booking_date)
         // <!-- # button to change booking status to 'Cancelled' -->
       var $cancelButton = $('<a>').addClass('waves-effect waves-light btn cancel-booking-btn col s1 offset-s1').text('Cancel');
       $cancelButton.click(function(e) {
