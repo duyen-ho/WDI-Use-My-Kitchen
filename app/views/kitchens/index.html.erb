@@ -30,6 +30,7 @@
     </form>
     <h2>Kitchens</h2>
     <section id="search-results" class="row col s12">
+
     </section>
 
     <div class="search-footer">
@@ -78,7 +79,7 @@
       }
     }).done(function(res) {
       res.forEach(function(result) {
-        var $result = $('<div>').attr('class', 'col s6');
+        var $result = $('<div>').attr('class', 'col s6 kitchen-listing');
 
         // TODO loop through to append multiple images
         if (result['kitchen_photos'][0]) {
