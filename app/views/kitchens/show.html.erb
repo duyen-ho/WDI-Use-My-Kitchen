@@ -50,7 +50,15 @@
               <%# Calculate average score for kitchen %>
               <% total_score += review.score %>
             <% end %>
-            <div>Average rating: <%= (total_score.to_f / @kitchen.kitchen_reviews.count).round(1) %></div>
+            <% rating = (total_score.to_f / @kitchen.kitchen_reviews.count).round(1) %>
+            <div>
+              <div>
+                <% rating.to_i.times do %>
+                <i class="material-icons">star</i>
+                <% end %>
+              </div>
+              Average rating: <%= rating %>
+            </div>
             <% @kitchen.kitchen_reviews.order('created_at DESC').each do |review| %>
               <div class="review card row">
                 <p>
