@@ -50,7 +50,11 @@
               <%# Calculate average score for kitchen %>
               <% total_score += review.score %>
             <% end %>
-            <% rating = (total_score.to_f / @kitchen.kitchen_reviews.count).round(1) %>
+            <% if @kitchen.kitchen_reviews.count > 1 %>
+              <% rating = (total_score.to_f / @kitchen.kitchen_reviews.count).round(1) %>
+            <% else %>
+              <% rating = 0 %>
+            <% end %>
             <div>
               <div>
                 <% rating.to_i.times do %>
