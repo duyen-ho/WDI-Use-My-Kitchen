@@ -90,7 +90,9 @@ class Api::KitchensController < ApplicationController
 
       kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
       kitchen_photo.image_url = params[:image_url]
+      # debugger
       kitchen_photo.save
+
       # TODO validation
 
       json_result[:success] = true

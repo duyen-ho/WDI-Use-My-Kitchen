@@ -58,13 +58,13 @@
   <div class="row">
     <div class="input-field col s4 offset-s4">
       <label for="description">Description</label>
-      <textarea id="textarea1" class="materialize-textarea" name="description" type="text"></textarea>
+      <textarea id="description" class="materialize-textarea" name="description" type="text"></textarea>
     </div>
   </div>
   <div class="row">
     <div class="input-field col s4 offset-s4">
-      <label for="image_url">Image URL</label>
-      <input id="image_url" name="image_url" type="text">
+      <label for="image-url">Image URL</label>
+      <input id="image-url" name="image_url" type="text">
     </div>
   </div>
   <div class="row">
@@ -108,7 +108,7 @@
         state: $('#state').val(),
         country: $('#country').val(),
         description: $('#description').val(),
-        image_url: $('#image_url').val(),
+        image_url: $('#image-url').val(),
         capacity: $('#capacity').val(),
         fee: $('#fee').val(),
         authenticity_token: '<%= form_authenticity_token %>',
