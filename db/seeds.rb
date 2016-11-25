@@ -5,16 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# user = User.new
-# user.name = 'Bobby Tables'
-# user.email = 'barcode@ga.co'
-# user.password = 'pudding'
-# user.photo_url = 'https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150'
-# user.description = 'This is a test user'
-#
-# user.save
 
-user_names_array = ['DT', 'Harry', 'Kasun','test4','test5','test6','test7','test8','test9','test10']
+# Note - Before Running - do:  1.  rails db:drop    2.   rails db:create    3.  rails db:migrate
+
+
+
+user_names_arr = ['DT', 'Harry', 'Kasun','test4','test5','test6','test7','test8','test9','test10']
 
 emails = [
   'dt@ga.com',
@@ -57,7 +53,8 @@ addresses_arr = [
   '100 Church St'
 ]
 
-suburbs_arr = ['Melbourne',
+suburbs_arr = [
+  'Melbourne',
   'Melbourne',
   'Melbourne',
   'Melbourne',
@@ -68,6 +65,18 @@ suburbs_arr = ['Melbourne',
   'Collingwood',
   'Richmond'
 ]
+postcodes_arr = [
+  '3000',
+  '3000',
+  '3000',
+  '3000',
+  '3000',
+  '3121',
+  '3121',
+  '3066',
+  '3066',
+  '3121'
+]
 
 kitchen_description_arr = [
   'Huge Ovens and Fridge',
@@ -76,6 +85,7 @@ kitchen_description_arr = [
   'Enormous!!!',
   'Elfresco Dining at its finest',
   'Three Fridges and Two Ovens',
+
   'Quality European Appliances',
   '900mm gas oven plus deluxe Steam Oven',
   '8 burners in beautiful outdoor kitchen',
@@ -96,12 +106,13 @@ kitchen_titles_arr = [
 ]
 
   kitchen_photo_url_arr = [
-    'http://smarthomesng.com/i/2015/11/dark-kitchen-island-design-with-stove-range-and-storage-drawers-also-black-marble-kitchen-bar-table.jpg',
+    'http://aytigo.com/wp-content/uploads/2016/09/Awesome-kitchen-appliances-india-for-Interior-Designing-Home-Ideas-with-kitchen-appliances-india.jpg',
     'https://s-media-cache-ak0.pinimg.com/564x/e9/9f/87/e99f878280f3d78b7cb670aa3cb4d83b.jpg',
     'https://st.hzcdn.com/fimgs/68e1aefc0caec243_1909-w500-h400-b0-p0--traditional-kitchen.jpg',
     'http://nicenup.com/wp-content/uploads/2016/08/big-kitchen-design-ideas-and-kitchen-island-designs-perfected-by-fascinating-surroundings-of-your-Kitchen-with-really-great-concept-of-ornaments-formation-14.jpg',
     'https://www.google.com.au/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwi23v2E5sDQAhVJTbwKHQIGARIQjRwIBw&url=http%3A%2F%2Fwww.houzz.com%2Fcovered-outdoor-kitchen&psig=AFQjCNF2RZCFmNELiK9rxOfAy-dMls8DfA&ust=1480056417823174',
     'https://s-media-cache-ak0.pinimg.com/originals/57/01/0a/57010a200c7ba57886906ad050e259c1.jpg',
+    'http://weebitphotography.com/wp-content/uploads/2016/06/popular-large-kitchen-pictures-cool-ideas-for-you.jpg',
     'http://www.bosch-home.com.au/Files/Bosch2/SharedContents/products/cooking_baking/Steam_appliances/_built-in/548x300_L_AttentionOfSteamers.jpg',
     'https://images.lowes.ca/img/x/13278/outdoor-kitchen_bbq_lifestyle.jpg',
     'http://d31eqxppr3nlos.cloudfront.net/wp-content/uploads/2014/04/11.jpg'
@@ -133,10 +144,28 @@ kitchen_titles_arr = [
       Date.new(2016, 12, 2)
     ]
 
+    bookings_fee_arr= [
+      100,
+      200,
+      300,
+      400,
+      500,
+      600,
+      700,
+      800,
+      900,
+      1000
+    ]
+
 users = []
 kitchens = []
 bookings = []
 
+# kitchen_photos = []
+
+User.delete_all
+Kitchen.delete_all
+KitchenPhoto.delete_all
 
 10.times do |i|
   user = User.new
@@ -147,7 +176,6 @@ bookings = []
   user.description = user_description_arr[i]
   user.save
   users.push(user)
-
 end
 
 10.times do |i|
@@ -155,6 +183,7 @@ end
   kitchen.address = addresses_arr[i]
   kitchen.suburb = suburbs_arr[i]
   kitchen.state = 'Vic'
+  kitchen.postcode = postcodes_arr[i]
   kitchen.country = 'Australia'
   kitchen.description = kitchen_description_arr[i]
   kitchen.capacity = i + 7
@@ -166,23 +195,9 @@ end
 end
 
 10.times do |i|
-  kitchen_photos = KitchenPhoto.new
-  kitchen_photos.image_url = kitchen_photo_url_arr[i]
-  kitchen_photos.kitchen_id = kitchens[i].id
-  kitchen_photos.save
-  kitchen_photos.push(kitchen_photo)
-end
-
-10.times do |i|
-  bookings = Booking.new
-  bookings.booking_date = booking_dates_arr[i]
-  bookings.note = "Please accept my booking request I will look after it"
-  bookings.status = 'confirmed'
-
-# *** TODO UP TO HERE ****
-  bookings.bookings_id = kitchens[i].id
-
-  booking.user_id = users.id
-  bookings.save
-  bookings.push(kitchen_photo)
+  kitchen_photo = KitchenPhoto.new
+  kitchen_photo.image_url = kitchen_photo_url_arr[i]
+  kitchen_photo.kitchen_id = kitchens[i].id
+  kitchen_photo.save
+  # kitchen_photos.push(kitchen_photos)
 end
