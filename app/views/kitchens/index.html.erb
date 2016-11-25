@@ -30,6 +30,7 @@
     </form>
     <h2>Kitchens</h2>
     <section id="search-results" class="row col s12">
+
     </section>
 
     <div class="search-footer">
@@ -78,10 +79,16 @@
       }
     }).done(function(res) {
       res.forEach(function(result) {
-        var $result = $('<div>').attr('class', 'col s6');
+        var $result = $('<div>').attr('class', 'col s6 kitchen-listing');
 
-        // console.log(result.kitchen_photos[0])
-        $result.append($('<img>').attr('src', "http://placehold.it/300x200"))
+        // TODO loop through to append multiple images
+        if (result['kitchen_photos'][0]) {
+          var image_url = result['kitchen_photos'][0]['image_url']
+        } else {
+          var image_url = "http://placehold.it/350x200"
+        }
+
+        $result.append($('<img>').attr('src', image_url))
 
           .append($('<div>')
           .append($('<h4>')
@@ -94,7 +101,21 @@
         $result.append($('<p>')
           .attr('class', 'price')
           .text('$' + parseFloat(result.fee).toFixed(2)));
+
+        // calculate average
+        var total = 0;
+        result.kitchen_reviews.forEach(function(review) {
+          total += review.score;
+        });
+        var average = total/result.kitchen_reviews.length;
+        if (average) {
+          $result.append($('<div>').text('Average Rating: ' + average.toFixed(1)));
+        }
+        else {
+          $result.append($('<div>').text('No reviews yet'));
+        }
         $('#search-results').append($result);
+
       });
       callback(res);
     });

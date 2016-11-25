@@ -27,8 +27,15 @@
   padding: .5rem;
 }
 
+.kitchen-listing {
+  width: 95%;
+  // border: 1px solid pink;
+}
+
+// TODO fix height
 #search-results img {
   width: 100%;
+  height: 240px;
 }
 
 .price {
