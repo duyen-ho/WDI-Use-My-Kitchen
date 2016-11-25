@@ -101,7 +101,21 @@
         $result.append($('<p>')
           .attr('class', 'price')
           .text('$' + parseFloat(result.fee).toFixed(2)));
+
+        // calculate average
+        var total = 0;
+        result.kitchen_reviews.forEach(function(review) {
+          total += review.score;
+        });
+        var average = total/result.kitchen_reviews.length;
+        if (average) {
+          $result.append($('<div>').text('Average Rating: ' + average.toFixed(1)));
+        }
+        else {
+          $result.append($('<div>').text('No reviews yet'));
+        }
         $('#search-results').append($result);
+
       });
       callback(res);
     });
