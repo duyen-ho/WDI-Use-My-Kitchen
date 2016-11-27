@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @kitchen_photo = KitchenPhoto.find_by(kitchen_id: params[:id])
   end
 
 

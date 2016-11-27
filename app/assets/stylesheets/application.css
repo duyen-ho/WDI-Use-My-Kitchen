@@ -129,21 +129,6 @@ nav li a {
   width: 100%;
 }
 
-/* Users */
-.profile-image {
-  width: 100%;
-  border-radius: 50%;
-}
-
-.user-details h3 {
-  padding-bottom: 1rem;
-}
-
-.user-details h5,
-.user-details p {
-  padding: 1rem 0;
-}
-
 /* Footer */
 footer {
   margin-top: 0;
