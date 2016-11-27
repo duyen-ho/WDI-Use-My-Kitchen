@@ -1,32 +1,42 @@
-<h1>Review Page</h1>
+<div class="container margin">
 
-<div>
-  <%= form_tag '/api/kitchens/reviews', method: 'post', id: 'kitchenReview-form' do %>
-  <p>
-    <input name="score" type="radio" id="star1" class=" score" value=1>
-    <label for="star1">1</label>
-  </p>
-  <p>
-    <input name="score" type="radio" id="star2" class="score" value=2>
-    <label for="star2">2</label>
-  </p>
-  <p>
-    <input name="score" type="radio" id="star3" class=" score" value=3>
-    <label for="star3">3</label>
-  </p>
-    <p>
-      <input name="score" type="radio" id="star4" class= "score" value=4>
-      <label for="star4">4</label>
-  </p>
-    <p>
-      <input name="score" type="radio" id="star5" class= "score" value=5>
-      <label for="star5">5</label>
-    </p>
-    <label for="">Comment</label>
-    <input type="text" id="content" name="content">
-    <button>submit</button>
-  <% end %>
+  <div class="row">
+    <h2>Review Page</h2>
+  </div>
+
+  <div>
+    <%= form_tag '/api/kitchens/reviews', method: 'post', id: 'kitchenReview-form' do %>
+    <ul>
+      <li>
+        <input name="score" type="radio" id="star1" class=" score" value=1>
+        <label for="star1">1</label>
+      </li>
+      <li>
+        <input name="score" type="radio" id="star2" class="score" value=2>
+        <label for="star2">2</label>
+      </li>
+      <li>
+        <input name="score" type="radio" id="star3" class=" score" value=3>
+        <label for="star3">3</label>
+      </li>
+      <li>
+        <input name="score" type="radio" id="star4" class= "score" value=4>
+        <label for="star4">4</label>
+      </li>
+      <li>
+        <input name="score" type="radio" id="star5" class= "score" value=5>
+        <label for="star5">5</label>
+      </li>
+    </ul>
+
+      <label for="">Comment</label>
+      <input type="text" id="content" name="content">
+      <button class="btn waves-effect waves-light">submit</button>
+
+    <% end %>
+  </div>
 </div>
+
 
 <script>
   var booking_id = window.location.pathname.match(/\d+/)[0];
