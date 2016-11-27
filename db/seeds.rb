@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Note - Before Running - do:  1.  rails db:drop    2.   rails db:create    3.  rails db:migrate
+# Note - Before Running - do:  1.  rails db:drop    2.   rails db:create    3.  rails db:migrate    4. rails db:seed
 
 
 
@@ -106,11 +106,11 @@ kitchen_titles_arr = [
 ]
 
   kitchen_photo_url_arr = [
-    'http://aytigo.com/wp-content/uploads/2016/09/Awesome-kitchen-appliances-india-for-Interior-Designing-Home-Ideas-with-kitchen-appliances-india.jpg',
+    'http://cdn.freshome.com/wp-content/uploads/2013/10/kitchen-evolving.jpeg',
     'https://s-media-cache-ak0.pinimg.com/564x/e9/9f/87/e99f878280f3d78b7cb670aa3cb4d83b.jpg',
     'https://st.hzcdn.com/fimgs/68e1aefc0caec243_1909-w500-h400-b0-p0--traditional-kitchen.jpg',
     'http://nicenup.com/wp-content/uploads/2016/08/big-kitchen-design-ideas-and-kitchen-island-designs-perfected-by-fascinating-surroundings-of-your-Kitchen-with-really-great-concept-of-ornaments-formation-14.jpg',
-    'https://www.google.com.au/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwi23v2E5sDQAhVJTbwKHQIGARIQjRwIBw&url=http%3A%2F%2Fwww.houzz.com%2Fcovered-outdoor-kitchen&psig=AFQjCNF2RZCFmNELiK9rxOfAy-dMls8DfA&ust=1480056417823174',
+    'http://australianoutdoorkitchens.com.au/wp-content/themes/Australian%20Outdoor%20Kitchen/images/home/pop%20up%20images/2.jpg',
     'https://s-media-cache-ak0.pinimg.com/originals/57/01/0a/57010a200c7ba57886906ad050e259c1.jpg',
     'http://weebitphotography.com/wp-content/uploads/2016/06/popular-large-kitchen-pictures-cool-ideas-for-you.jpg',
     'http://www.bosch-home.com.au/Files/Bosch2/SharedContents/products/cooking_baking/Steam_appliances/_built-in/548x300_L_AttentionOfSteamers.jpg',
