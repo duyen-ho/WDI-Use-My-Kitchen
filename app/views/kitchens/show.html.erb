@@ -14,10 +14,10 @@
 
 <div class="container">
   <div class="row">
-    <div id="kitchen-details" class="col s8">
+    <div id="kitchen-details" class="col l8">
       <div class="kitchen-summary">
         <h2><%= @kitchen.title %></h2>
-        <p><%= "#{@kitchen.address}, #{@kitchen.state} - #{@kitchen.country}" %></p>
+        <p><%= "#{@kitchen.suburb}, #{@kitchen.state} - #{@kitchen.country}" %></p>
       </div>
       <div class="kitchen-text">
         <h3>About</h3>
@@ -25,25 +25,25 @@
       </div>
       <div class=" kitchen-snapshot">
         <div class="row">
-          <div class="col s3">
+          <div class="col l3">
             <h3>Capacity</h3>
           </div>
-          <div class="col s9">
+          <div class="col l9">
             <h4 class="capacity"><%= @kitchen.capacity %> Guests</h4>
           </div>
         </div>
         <div class="row">
-          <div class="col s3">
+          <div class="col l3">
             <h3>Price</h3>
           </div>
-          <div class="col s9">
+          <div class="col l9">
             <h4 class="capacity">$<%= @kitchen.fee %></h4>
           </div>
         </div>
       </div>
       <div class="kitchen-reviews">
         <div class="row">
-          <div class="col s9">
+          <div class="col l9">
             <h3>Reviews</h3>
             <% total_score = 0 %>
             <% @kitchen.kitchen_reviews.each do |review| %>
@@ -83,7 +83,7 @@
       <% end %>
 
     </div>
-    <div id="booking-form" class="col s4">
+    <div id="booking-form" class="col l4">
       <%= render "/bookings/new", locals: { kitchen_id: @kitchen.id } %>
     </div>
   </div>
