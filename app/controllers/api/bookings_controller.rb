@@ -5,13 +5,19 @@ class Api::BookingsController < ApplicationController
     # TODO: Filter only upcoming bookings for current user
     result = {}
     kitchen = Kitchen.find_by(user_id: session[:user_id])
-    result[:reservations] = Booking
-      .where(kitchen_id: kitchen.id)
-      .order('booking_date DESC')
+
     result[:bookings] = Booking
       .where(user_id: session[:user_id])
       .order('booking_date DESC')
 
+    if kitchen
+      result[:reservations] = Booking
+        .where(kitchen_id: kitchen.id)
+        .order('booking_date DESC')
+    else
+      result[:reservations] = []
+    end
+    
     render json: result
   end
 
